@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+    Login | {{ config('app.name') }}
+@endsection
+
 @section('style')
     <style>
         [v-cloak] {

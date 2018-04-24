@@ -14,3 +14,12 @@
 Route::view('/', 'pages.welcome');
 
 Auth::routes();
+
+// Admin Routes
+Route::group(['prefix' => 'admin'], function() {
+    Route::get('/', 'AdminController@index');
+    Route::middleware('admin.guest')->get('/login', 'AdminController@showLoginForm')->name('admin.login.form');
+    Route::middleware('admin.guest')->post('/login', 'AdminController@login')->name('admin.login');
+
+    Route::get('/students', 'StudentController@index')->name('admin.students');
+});

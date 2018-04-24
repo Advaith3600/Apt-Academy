@@ -17,14 +17,15 @@ class CreateStudentsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('email')->unique();
+            $table->text('bio');
+            $table->string('profile_picture');
             $table->string('password');
+            $table->boolean('passed_out')->default(false);
             $table->rememberToken();
             $table->timestamps();
 
-            $table->integer('guardian_id')->nullable()->unsigned();
-            $table->foreign('guardian_id')->references('id')->on('guardians')->onDelete('cascade');
-            $table->integer('profile_id')->nullable()->unsigned();
-            $table->foreign('profile_id')->references('id')->on('profiles')->onDelete('cascade');
+            $table->integer('guardian_id')->unsigned();
+            $table->integer('standard_id')->unsigned();
         });
     }
 

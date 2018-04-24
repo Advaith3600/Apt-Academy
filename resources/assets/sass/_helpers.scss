@@ -1,9 +1,32 @@
 .text-dim {
-    color: rgba(0,0,0,0.5)
+    color: rgba(0, 0, 0, 0.5)
 }
 .number-font {
     font-family: "Open Sans", Arial, Helvetica, sans-serif;
 }
 .text-underline {
     text-decoration: underline;
+}
+.text-decoration-none {
+    text-decoration: none;
+}
+.list-style-none {
+    list-style-type: none;
+}
+.c-pointer {
+    cursor: pointer;
+}
+.text-hover-grey {
+    transition: .2s;
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.05);
+    }
+}
+.normalise-a {
+    text-decoration: none;
+    color: inherit;
+    &:hover {
+        text-decoration: none;
+        color: inherit;
+    }
 }

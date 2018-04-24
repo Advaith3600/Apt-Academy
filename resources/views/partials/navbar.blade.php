@@ -31,12 +31,22 @@
             </li>
             <li class="mx-3">
                 <a href="#" class="d-flex">
-                    <span class="m-auto">Contact Us</span>
+                    <span class="m-auto">About</span>
                 </a>
             </li>
             <li class="mx-3">
                 <a href="#" class="d-flex">
-                    <span class="m-auto">asdasd</span>
+                    <span class="m-auto">Exam / Result</span>
+                </a>
+            </li>
+            <li class="mx-3">
+                <a href="#" class="d-flex">
+                    <span class="m-auto">Timetable</span>
+                </a>
+            </li>
+            <li class="mx-3">
+                <a href="#" class="d-flex">
+                    <span class="m-auto">Contact Us</span>
                 </a>
             </li>
         </ul>

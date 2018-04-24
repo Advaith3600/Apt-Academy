@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Middleware;
+namespace App\Http\Middleware\Auth;
 
 use Auth;
 use Closure;
 
-class GuardAuthMiddleware
+class AdminCheckMiddleware
 {
     /**
      * Handle an incoming request.
@@ -16,9 +16,9 @@ class GuardAuthMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::guard('student')->check() || Auth::guard('guardian')->check() || Auth::guard('faculty')->check() || Auth::guard('admin')->check() || Auth::guard('web')->check()) {
+        if (Auth::guard('admin')->check()) {
             return $next($request);
         }
-        return redirect()->route('login');
+        return redirect()->route('admin.login.form');
     }
 }

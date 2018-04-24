@@ -21,6 +21,14 @@ class CreateAdminsTable extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
+
+        DB::table('admins')->insert(
+            [
+                'name' => 'Advaith',
+                'email' => 'advaitharunjeena@gmail.com',
+                'password' => \Hash::make('password')
+            ]
+        );
     }
 
     /**
