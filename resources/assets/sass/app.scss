@@ -11,5 +11,17 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
-// Custom
+// Navbar
 @import "navbar";
+
+// Footer
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: white;
+    text-align: center;
+    padding: 8px 0;
+    border-top: 3px solid var(--green);
+}

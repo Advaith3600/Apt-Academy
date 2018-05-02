@@ -21,6 +21,7 @@ class CreateStudentsTable extends Migration
             $table->string('profile_picture');
             $table->string('password');
             $table->boolean('passed_out')->default(false);
+            $table->boolean('accepted')->default(false);
             $table->rememberToken();
             $table->timestamps();
 

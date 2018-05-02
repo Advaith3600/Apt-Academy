@@ -36,12 +36,12 @@
             </li>
             <li class="mx-3">
                 <a href="#" class="d-flex">
-                    <span class="m-auto">Exam / Result</span>
+                    <span class="m-auto">Academics</span>
                 </a>
             </li>
             <li class="mx-3">
-                <a href="#" class="d-flex">
-                    <span class="m-auto">Timetable</span>
+                <a href="{{ route('admission.index') }}" class="d-flex{{ Request::is('admission') ? ' active' : '' }}">
+                    <span class="m-auto">Admission</span>
                 </a>
             </li>
             <li class="mx-3">

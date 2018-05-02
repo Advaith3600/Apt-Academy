@@ -1,8 +1,6 @@
 @extends('layouts.app')
 
-@section('title')
-    Register | {{ config('app.name') }}
-@endsection
+@section('title', "Register | ")
 
 @section('content')
 <div class="container">

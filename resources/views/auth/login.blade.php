@@ -1,8 +1,6 @@
 @extends('layouts.app')
 
-@section('title')
-    Login | {{ config('app.name') }}
-@endsection
+@section('title', "Login | ")
 
 @section('style')
     <style>

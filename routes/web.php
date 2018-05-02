@@ -23,3 +23,7 @@ Route::group(['prefix' => 'admin'], function() {
 
     Route::get('/students', 'StudentController@index')->name('admin.students');
 });
+
+Route::group(['prefix' => 'admission'], function() {
+    Route::get('/', 'AdmissionController@index')->name('admission.index');
+});

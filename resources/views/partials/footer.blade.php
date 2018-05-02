@@ -1,3 +1,3 @@
-<footer class="d-flex justify-content-center">
+<footer>
     Copyright &copy; {{ date('Y') }} Advaith A J All Rights Reserved.
 </footer>

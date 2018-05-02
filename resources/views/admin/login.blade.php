@@ -1,8 +1,6 @@
 @extends('layouts.app')
 
-@section('title')
-    Admin Login | {{ config('app.name') }}
-@endsection
+@section('title', "Admin Login | ")
 
 @section('content')
     <div class="container">
