@@ -6,6 +6,8 @@ import faTimes from '@fortawesome/fontawesome-free-solid/faTimes';
 import faUser from '@fortawesome/fontawesome-free-solid/faUser';
 import faEnvelope from '@fortawesome/fontawesome-free-solid/faEnvelope';
 import faKey from '@fortawesome/fontawesome-free-solid/faKey';
+import faGraduationCap from '@fortawesome/fontawesome-free-solid/faGraduationCap';
+import faImage from '@fortawesome/fontawesome-free-solid/faImage';
 
 fontawesome.library.add({
     faCalendarAlt,
@@ -13,5 +15,7 @@ fontawesome.library.add({
     faTimes,
     faUser,
     faEnvelope,
-    faKey
+    faKey,
+    faGraduationCap,
+    faImage
 });

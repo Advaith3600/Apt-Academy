@@ -26,7 +26,7 @@
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
-                        <input type="hidden" v-model="guard" name="guard">
+                        <input required type="hidden" v-model="guard" name="guard">
 
                         <div class="form-group row">
                             <label for="email" class="col-sm-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
@@ -38,7 +38,7 @@
                                     </span>
                                 </div>
 
-                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" placeholder="Email" autofocus>
+                                <input required id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" placeholder="Email" autofocus>
 
                                 @if ($errors->has('email'))
                                     <span class="invalid-feedback">
@@ -58,7 +58,7 @@
                                     </span>
                                 </div>
 
-                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" placeholder="Password">
+                                <input required id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" placeholder="Password">
 
                                 @if ($errors->has('password'))
                                     <span class="invalid-feedback">
@@ -72,7 +72,7 @@
                             <div class="col-md-6 offset-md-4">
                                 <div class="checkbox">
                                     <label>
-                                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> {{ __('Remember Me') }}
+                                        <input required type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> {{ __('Remember Me') }}
                                     </label>
                                 </div>
                             </div>

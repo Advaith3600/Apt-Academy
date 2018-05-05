@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateFacultiesTable extends Migration
+class CreateSchoolsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,11 @@ class CreateFacultiesTable extends Migration
      */
     public function up()
     {
-        Schema::create('faculties', function (Blueprint $table) {
+        Schema::create('schools', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('email')->unique();
-            $table->text('bio');
-            $table->string('profile_picture');
-            $table->string('password');
-            $table->rememberToken();
+            $table->string('location');
             $table->timestamps();
-
-            $table->integer('school_id')->unsigned();
         });
     }
 
@@ -34,8 +28,6 @@ class CreateFacultiesTable extends Migration
      */
     public function down()
     {
-        Schema::table('faculties', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('schools');
     }
 }

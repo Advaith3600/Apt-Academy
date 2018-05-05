@@ -32,7 +32,7 @@
 
                     <form method="POST" action="{{ route('password.email') }}">
                         @csrf
-                        <input type="hidden" v-model="guard" name="guard">
+                        <input required type="hidden" v-model="guard" name="guard">
 
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
@@ -44,7 +44,7 @@
                                     </span>
                                 </div>
 
-                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" placeholder="Email">
+                                <input required id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" placeholder="Email">
 
                                 @if ($errors->has('email'))
                                     <span class="invalid-feedback">

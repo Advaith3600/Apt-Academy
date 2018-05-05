@@ -10,4 +10,9 @@ class Standard extends Model
     {
         return $this->hasMany('App\Student');
     }
+
+    public function admission()
+    {
+        return $this->hasMany('App\Admission');
+    }
 }

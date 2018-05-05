@@ -16,14 +16,25 @@ Route::view('/', 'pages.welcome');
 Auth::routes();
 
 // Admin Routes
-Route::group(['prefix' => 'admin'], function() {
+Route::group(['prefix' => 'admin', 'as' => 'admin.'], function() {
     Route::get('/', 'AdminController@index');
-    Route::middleware('admin.guest')->get('/login', 'AdminController@showLoginForm')->name('admin.login.form');
-    Route::middleware('admin.guest')->post('/login', 'AdminController@login')->name('admin.login');
+    Route::middleware('admin.guest')->get('/login', 'AdminController@showLoginForm')->name('login.form');
+    Route::middleware('admin.guest')->post('/login', 'AdminController@login')->name('login');
 
-    Route::get('/students', 'StudentController@index')->name('admin.students');
+    Route::get('/students', 'StudentController@index')->name('students');
+
+    Route::group(['prefix' => 'schools', 'as' => 'schools.'], function() {
+        Route::get('/', 'SchoolController@index')->name('index');
+        Route::get('/create', 'SchoolController@create')->name('create');
+        Route::post('/store', 'SchoolController@store')->name('store');
+    });
+
+    Route::group(['prefix' => 'admissions', 'as' => 'admissions.'], function() {
+        Route::get('/', 'AdmissionController@adminIndex')->name('index');
+    });
 });
 
-Route::group(['prefix' => 'admission'], function() {
-    Route::get('/', 'AdmissionController@index')->name('admission.index');
+Route::group(['prefix' => 'admission', 'as' => 'admission.'], function() {
+    Route::get('/', 'AdmissionController@index')->name('index');
+    Route::post('/store', 'AdmissionController@store')->name('store');
 });

@@ -20,7 +20,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     @yield('style')
 </head>
-<body style="height: 10000px;">
+<body>
     <div id="app">
         @include('partials.navbar')
 

@@ -13,7 +13,7 @@
                     <form method="POST" action="{{ route('password.request') }}">
                         @csrf
 
-                        <input type="hidden" name="token" value="{{ $token }}">
+                        <input required type="hidden" name="token" value="{{ $token }}">
 
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
@@ -25,7 +25,7 @@
                                     </span>
                                 </div>
 
-                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ $email ?? old('email') }}" placeholder="Email" autofocus>
+                                <input required id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ $email ?? old('email') }}" placeholder="Email" autofocus>
 
                                 @if ($errors->has('email'))
                                     <span class="invalid-feedback">
@@ -45,7 +45,7 @@
                                     </span>
                                 </div>
 
-                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" placeholder="New Password">
+                                <input required id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" placeholder="New Password">
 
                                 @if ($errors->has('password'))
                                     <span class="invalid-feedback">
@@ -65,7 +65,7 @@
                                     </span>
                                 </div>
 
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="Confirm New Password">
+                                <input required id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="Confirm New Password">
                             </div>
                         </div>
 

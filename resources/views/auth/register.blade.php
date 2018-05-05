@@ -25,7 +25,7 @@
                                     </span>
                                 </div>
 
-                                <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" placeholder="Name" autofocus>
+                                <input required id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" placeholder="Name" autofocus>
 
                                 @if ($errors->has('name'))
                                     <span class="invalid-feedback">
@@ -45,7 +45,7 @@
                                     </span>
                                 </div>
 
-                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" placeholder="Email">
+                                <input required id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" placeholder="Email">
 
                                 @if ($errors->has('email'))
                                     <span class="invalid-feedback">
@@ -65,7 +65,7 @@
                                     </span>
                                 </div>
 
-                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" placeholder="Password">
+                                <input required id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" placeholder="Password">
 
                                 @if ($errors->has('password'))
                                     <span class="invalid-feedback">
@@ -85,7 +85,7 @@
                                     </span>
                                 </div>
 
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="Confirm Password">
+                                <input required id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="Confirm Password">
                             </div>
                         </div>
 
