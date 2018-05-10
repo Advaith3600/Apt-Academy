@@ -17,7 +17,7 @@ class CreateFacultiesTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('email')->unique();
-            $table->text('bio');
+            $table->text('bio')->nullable();
             $table->string('profile_picture');
             $table->string('password');
             $table->rememberToken();

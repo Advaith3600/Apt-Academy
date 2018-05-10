@@ -30,11 +30,13 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function() {
     });
 
     Route::group(['prefix' => 'admissions', 'as' => 'admissions.'], function() {
-        Route::get('/', 'AdmissionController@adminIndex')->name('index');
+        Route::get('/', 'AdmissionController@index')->name('index');
+        Route::get('/{id}/view', 'AdmissionController@show')->name('show');
+        Route::put('/{id}/accept', 'AdmissionController@update')->name('accept');
     });
 });
 
 Route::group(['prefix' => 'admission', 'as' => 'admission.'], function() {
-    Route::get('/', 'AdmissionController@index')->name('index');
+    Route::get('/', 'AdmissionController@create')->name('index');
     Route::post('/store', 'AdmissionController@store')->name('store');
 });

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Image;
 use Session;
 use App\School;
+use App\Student;
 use App\Standard;
 use Carbon\Carbon;
 use App\Admission;
@@ -13,6 +14,12 @@ use Illuminate\Http\Request;
 class AdmissionController extends Controller
 {
     public function index()
+    {
+        $admissions = Admission::where('accepted', '!=', true)->get();
+        return view('admin.admissions.index')->withAdmissions($admissions);
+    }
+
+    public function create()
     {
         $standards = Standard::all();
         $schools = School::all();
@@ -57,9 +64,36 @@ class AdmissionController extends Controller
         return back();
     }
 
-    public function adminIndex()
+    public function show($id)
     {
-        $admissions = Admission::where('accepted', '!=', true)->get();
-        return view('admin.admissions.index')->withAdmissions($admissions);
+        $standards = Standard::all();
+        $schools = School::all();
+        $admission = Admission::find($id);
+        return view('admin.admissions.show')->withAdmission($admission)->withStandards($standards)->withSchools($schools);
+    }
+
+    public function update($id)
+    {
+        $admission = Admission::find($id);
+        $newLocation = '/images/profiles/' . explode('/', $admission->picture)[2];
+
+        Student::create([
+            'name' => $admission->name,
+            'email' => $admission->email,
+            'profile_picture' => $newLocation,
+            'school_id' => $admission->school_id,
+            'standard_id' => $admission->standard_id,
+            'password' => bcrypt($admission->name . '@apt')
+        ]);
+
+        $admission->update([
+            'accepted' => true,
+            'picture' => $newLocation
+        ]);
+
+        rename(public_path($admission->picture), public_path($newLocation));
+
+        Session::flash('Successfully accepted the admission request');
+        return back();
     }
 }

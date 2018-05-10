@@ -26,7 +26,7 @@
                 </tr>
             @empty
                 <tr class="text-center">
-                    <td colspan="5">There are no students yet</td>
+                    <td colspan="5">There are no students registered yet</td>
                 </tr>
             @endforelse
         </tbody>

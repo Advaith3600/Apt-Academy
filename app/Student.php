@@ -16,7 +16,7 @@ class Student extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'profile_picture', 'bio', 'school_id', 'standard_id'
     ];
 
     /**
@@ -27,4 +27,14 @@ class Student extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function standard()
+    {
+        return $this->belongsTo('App\Standard');
+    }
+
+    public function school()
+    {
+        return $this->belongsTo('App\School');
+    }
 }

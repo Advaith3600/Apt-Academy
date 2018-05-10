@@ -17,19 +17,23 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($admissions as $admission)
+                @forelse ($admissions as $admission)
                     <tr>
                         <td>{{ $admission->name }}</td>
                         <td>{{ $admission->email }}</td>
                         <td>{{ $admission->standard->class }} ({{ $admission->standard->syllabus }})</td>
                         <td>{{ $admission->school->name }} ({{ $admission->school->location }})</td>
                         <td>
-                            <a href="#" class="btn btn-primary btn-sm">
+                            <a href="{{ route('admin.admissions.show', $admission->id) }}" class="btn btn-primary btn-sm">
                                 View
                             </a>
                         </td>
                     </tr>
-                @endforeach
+                @empty
+                    <tr class="text-center">
+                        <td colspan="5">No new Admission requests</td>
+                    </tr>
+                @endforelse
             </tbody>
         </table>
     </div>
