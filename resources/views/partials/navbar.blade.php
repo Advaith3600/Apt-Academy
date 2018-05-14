@@ -46,7 +46,7 @@
                     </a>
                 </li>
                 <li class="mx-3">
-                    <a href="#" class="d-flex">
+                    <a href="{{ url('/contact') }}" class="d-flex">
                         <span class="m-auto">Contact Us</span>
                     </a>
                 </li>

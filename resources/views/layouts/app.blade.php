@@ -24,7 +24,7 @@
     <div id="app">
         @include('partials.navbar')
 
-        <main class="py-4 mb-5">
+        <main class="{{ Request::is('/') ? '' : 'py-4 ' }}mb-5">
             @yield('content')
         </main>
     </div>

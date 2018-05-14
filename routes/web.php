@@ -40,3 +40,6 @@ Route::group(['prefix' => 'admission', 'as' => 'admission.'], function() {
     Route::get('/', 'AdmissionController@create')->name('index');
     Route::post('/store', 'AdmissionController@store')->name('store');
 });
+
+Route::get('/contact', 'ContactUsController@index');
+Route::post('/contact', 'ContactUsController@sendMail');

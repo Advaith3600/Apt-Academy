@@ -89,10 +89,16 @@
         height: 128px;
     }
 }
+@include media-breakpoint-up(sm) {
+    .apt-logo {
+        transform: scale(1)!important;
+    }
+}
 
 .apt-logo {
     width: 290px;
     height: 70px;
+    transform: scale(.6);
 }
 .navbar-bottom {
     z-index: 1000;
