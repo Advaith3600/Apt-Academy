@@ -2,14 +2,53 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
+use Session;
+use App\School;
 use App\Student;
+use App\Standard;
 use Illuminate\Http\Request;
 
 class StudentController extends Controller
 {
+    public function __construct()
+    {
+        return $this->middleware('admin.auth');
+    }
+
     public function index()
     {
         $students = Student::all();
         return view('admin.students.index')->withStudents($students);
+    }
+
+    public function register()
+    {
+        $standards = Standard::all();
+        $schools = School::all();
+        return view('admin.students.register')->withStandards($standards)->withSchools($schools);
+    }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'standard' => 'required|integer',
+            'picture' => 'required|image',
+            'school' => 'required|integer'
+        ]);
+
+        Student::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'standard_id' => $request->standard,
+            'profile_picture' => $request->picture,
+            'school_id' => $request->school,
+            'password' => bcrypt(strtolower($request->name) . '@apt')
+        ]);
+
+        Session::flash('success', 'Student registered successfully');
+        return back();
     }
 }

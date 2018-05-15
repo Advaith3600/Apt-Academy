@@ -86,7 +86,7 @@
         left: 0;
     }
     .nav-wrapper {
-        height: 128px;
+        height: 127px;
     }
 }
 @include media-breakpoint-up(sm) {
@@ -126,6 +126,7 @@
 }
 
 .aj-nav {
+    margin-bottom: -1px;
     height: 3rem;
     li {
         a {

@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 
 class SchoolController extends Controller
 {
+    public function __construct()
+    {
+        return $this->middleware('admin.auth');
+    }
+    
     public function index()
     {
         $schools = School::all();

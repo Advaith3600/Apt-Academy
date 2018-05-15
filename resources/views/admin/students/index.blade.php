@@ -3,7 +3,14 @@
 @section('title', 'Manage Students | ')
 
 @section('admin-content')
-    <h3>Manage Students</h3>
+    <h3 class="d-flex justify-content-between">
+        <div>Manage Students</div>
+        <div>
+            <a href="{{ route('admin.students.register') }}" class="btn btn-outline-success btn-sm px-3">
+                Register
+            </a>
+        </div>
+    </h3>
 
     <table class="table border rounded">
         <thead>

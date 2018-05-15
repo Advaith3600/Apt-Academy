@@ -56,7 +56,7 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary" v-cloak>
+                                <button type="submit" class="btn btn-outline-success px-3" v-cloak>
                                     {{ __('Send Password Reset Link') }} for @{{ guardName }}
                                 </button>
                             </div>

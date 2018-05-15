@@ -46,7 +46,7 @@
                     </a>
                 </li>
                 <li class="mx-3">
-                    <a href="{{ url('/contact') }}" class="d-flex">
+                    <a href="{{ url('/contact') }}" class="d-flex{{ Request::is('contact') ? ' active' : '' }}">
                         <span class="m-auto">Contact Us</span>
                     </a>
                 </li>
@@ -69,7 +69,7 @@
                 @gauth
                     @if (Guard::getLoggedInGuard() == 'admin')
                         <li class="mx-3">
-                            <a href="{{ route('admin.') }}" class="d-flex{{ Request::is('admin') ? ' active' : '' }}">
+                            <a href="{{ route('admin.') }}" class="d-flex{{ Request::segment(1) == 'admin' ? ' active' : '' }}">
                                 <span class="m-auto">{{ __('Admin') }}</span>
                             </a>
                         </li>

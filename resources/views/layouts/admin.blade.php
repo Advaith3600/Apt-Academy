@@ -14,12 +14,12 @@
                     <div class="card-body p-0">
                         <ul class="mb-0 pl-0 list-style-none">
                             <a href="{{ route('admin.admissions.index') }}" class="normalise-a">
-                                <li class="c-pointer text-hover-grey px-3 py-2">
+                                <li class="c-pointer px-3 py-2{{ Request::segment(2) == 'admissions' ? ' bg-success text-white' : ' text-hover-grey' }}">
                                     Manage Admission
                                 </li>
                             </a>
-                            <a href="{{ route('admin.students') }}" class="normalise-a">
-                                <li class="c-pointer text-hover-grey px-3 py-2">
+                            <a href="{{ route('admin.students.index') }}" class="normalise-a">
+                                <li class="c-pointer px-3 py-2{{ Request::segment(2) == 'students' ? ' bg-success text-white' : ' text-hover-grey' }}">
                                     Manage Students
                                 </li>
                             </a>
@@ -34,7 +34,7 @@
                                 </li>
                             </a>
                             <a href="{{ route('admin.schools.index') }}" class="normalise-a">
-                                <li class="c-pointer text-hover-grey px-3 py-2">
+                                <li class="c-pointer px-3 py-2{{ Request::segment(2) == 'schools' ? ' bg-success text-white' : ' text-hover-grey' }}">
                                     Manage Schools
                                 </li>
                             </a>
@@ -45,7 +45,7 @@
 
             <div class="col-md-9 mt-2 mt-md-0">
                 <div class="card">
-                    <div class="card-body">
+                    <div class="card-body o-auto">
                         @yield('admin-content')
                     </div>
                 </div>

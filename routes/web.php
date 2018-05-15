@@ -21,7 +21,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function() {
     Route::middleware('admin.guest')->get('/login', 'AdminController@showLoginForm')->name('login.form');
     Route::middleware('admin.guest')->post('/login', 'AdminController@login')->name('login');
 
-    Route::get('/students', 'StudentController@index')->name('students');
+    Route::group(['prefix' => 'students', 'as' => 'students.'], function() {
+        Route::get('/', 'StudentController@index')->name('index');
+        Route::get('/register', 'StudentController@register')->name('register');
+        Route::post('/store', 'StudentController@store')->name('store');
+    });
 
     Route::group(['prefix' => 'schools', 'as' => 'schools.'], function() {
         Route::get('/', 'SchoolController@index')->name('index');
@@ -32,7 +36,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function() {
     Route::group(['prefix' => 'admissions', 'as' => 'admissions.'], function() {
         Route::get('/', 'AdmissionController@index')->name('index');
         Route::get('/{id}/view', 'AdmissionController@show')->name('show');
-        Route::put('/{id}/accept', 'AdmissionController@update')->name('accept');
+        Route::put('/{id}/accept', 'AdmissionController@accept')->name('accept');
     });
 });
 

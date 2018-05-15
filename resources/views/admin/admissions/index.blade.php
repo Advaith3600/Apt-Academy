@@ -24,7 +24,7 @@
                         <td>{{ $admission->standard->class }} ({{ $admission->standard->syllabus }})</td>
                         <td>{{ $admission->school->name }} ({{ $admission->school->location }})</td>
                         <td>
-                            <a href="{{ route('admin.admissions.show', $admission->id) }}" class="btn btn-primary btn-sm">
+                            <a href="{{ route('admin.admissions.show', $admission->id) }}" class="btn btn-outline-success btn-sm px-3">
                                 View
                             </a>
                         </td>

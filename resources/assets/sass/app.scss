@@ -24,8 +24,29 @@ footer {
     padding: 8px 0;
     border-top: 3px solid var(--green);
 }
+
+// default styles
+a, .btn.btn-link {
+    color: #28a745;
+}
+a:hover, a:active {
+    color: var(--green);
+}
+.form-control:focus {
+    border-color: var(--success);
+    box-shadow: 0 0 0 0.2rem rgba(100, 255, 100, 0.25);
+}
+
+// carousel styles
 .h-carousel {
     height: 300px;
+}
+.carousel-round {
+    position: relative;
+    display: flex;
+    background-color: rgba(0, 0, 0, .8);
+    padding: 15px;
+    border-radius: 50%;
 }
 @include media-breakpoint-up(sm) {
     .h-carousel {

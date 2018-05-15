@@ -13,6 +13,11 @@ use Illuminate\Http\Request;
 
 class AdmissionController extends Controller
 {
+    public function __construct()
+    {
+        return $this->middleware('admin.auth', ['except' => ['create', 'store']]);
+    }
+
     public function index()
     {
         $admissions = Admission::where('accepted', '!=', true)->get();
@@ -72,7 +77,7 @@ class AdmissionController extends Controller
         return view('admin.admissions.show')->withAdmission($admission)->withStandards($standards)->withSchools($schools);
     }
 
-    public function update($id)
+    public function accept($id)
     {
         $admission = Admission::find($id);
         $newLocation = '/images/profiles/' . explode('/', $admission->picture)[2];
@@ -83,7 +88,7 @@ class AdmissionController extends Controller
             'profile_picture' => $newLocation,
             'school_id' => $admission->school_id,
             'standard_id' => $admission->standard_id,
-            'password' => bcrypt($admission->name . '@apt')
+            'password' => bcrypt(strtolower($admission->name) . '@apt')
         ]);
 
         $admission->update([

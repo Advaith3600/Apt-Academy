@@ -62,7 +62,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="standard" class="col-form-label">{{ __('Satndard you want to take admission:') }}</label>
+                                <label for="standard" class="col-form-label">{{ __('Next Standard:') }}</label>
 
                                 <div class="input-group">
                                     <div class="input-group-prepend">
@@ -72,7 +72,7 @@
                                     </div>
 
                                     <select class="form-control{{ $errors->has('standard') ? ' is-invalid' : '' }}" name="standard">
-                                        <option value="0">Select the satndard you want to take admission</option>
+                                        <option value="0">Select the standard you want to take admission</option>
                                         @foreach ($standards as $standard)
                                             <option value="{{ $standard->id }}">{{ $standard->class }} ({{ $standard->syllabus }})</option>
                                         @endforeach
@@ -108,7 +108,7 @@
                                 </div>
 
                                 <div class="col-md-6">
-                                    <label for="grades" class="col-form-label">{{ __('Picture of your previous years grades:') }}</label>
+                                    <label for="grades" class="col-form-label">{{ __('Picture of your previous year\'s grades:') }}</label>
 
                                     <div class="input-group">
                                         <div class="input-group-prepend">
@@ -129,7 +129,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="school" class="col-form-label">{{ __('Please select the school in which you are studying:') }}</label>
+                                <label for="school" class="col-form-label">{{ __('Select the school in which you are studying:') }}</label>
 
                                 <div class="input-group">
                                     <div class="input-group-prepend">
@@ -169,8 +169,8 @@
 
                             <div class="form-group mb-0">
                                 <div>
-                                    <button type="submit" class="btn btn-primary">
-                                        {{ __('Request Admission') }}
+                                    <button type="submit" class="btn btn-outline-success btn-block">
+                                        {{ __('Send Request') }}
                                     </button>
                                 </div>
                             </div>

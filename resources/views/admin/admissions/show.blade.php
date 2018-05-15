@@ -85,7 +85,7 @@
                         <form action="{{ route('admin.admissions.accept', $admission->id) }}" method="POST">
                             @csrf
                             @method('PUT')
-                            <button type="submit" class="btn btn-success">
+                            <button type="submit" class="btn btn-outline-success px-3">
                                 {{ __('Accept Admission') }}
                             </button>
                         </form>

@@ -72,7 +72,7 @@
                             <div class="col-md-6 offset-md-4">
                                 <div class="checkbox">
                                     <label>
-                                        <input required type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> {{ __('Remember Me') }}
+                                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> {{ __('Remember Me') }}
                                     </label>
                                 </div>
                             </div>
@@ -80,7 +80,7 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary" v-cloak>
+                                <button type="submit" class="btn btn-outline-success px-3" v-cloak>
                                     {{ __('Login') }} as a @{{ guardName }}
                                 </button>
 

@@ -3,9 +3,9 @@
 @section('title', "Manage Schools | ")
 
 @section('admin-content')
-    <h3>
+    <h3 class="d-flex justify-content-between">
         Manage Schools
-        <a href="{{ route('admin.schools.create') }}" class="btn btn-primary btn-sm float-right">Create</a>
+        <a href="{{ route('admin.schools.create') }}" class="btn btn-outline-success btn-sm px-3">Create</a>
     </h3>
 
     <div>

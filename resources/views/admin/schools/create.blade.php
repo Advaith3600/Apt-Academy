@@ -5,7 +5,7 @@
 @section('admin-content')
     <form action="{{ route('admin.schools.store') }}" method="post">
         @csrf
-        
+
         <div class="form-group">
             <label for="name" class="col-form-label">{{ __('School Name') }}</label>
 
@@ -34,6 +34,6 @@
             </div>
         </div>
 
-        <input type="submit" value="Add" class="btn btn-primary">
+        <input type="submit" value="Add School" class="btn btn-outline-success px-3">
     </form>
 @endsection
