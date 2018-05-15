@@ -73,6 +73,12 @@
                                 <span class="m-auto">{{ __('Admin') }}</span>
                             </a>
                         </li>
+                    @else
+                        <li class="mx-3">
+                            <a href="{{ route('profile') }}" class="d-flex{{ Request::is('profile') ? ' active' : '' }}">
+                                <span class="m-auto">{{ __('Profile') }}</span>
+                            </a>
+                        </li>
                     @endif
                     <li class="mx-3">
                         <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="d-flex">

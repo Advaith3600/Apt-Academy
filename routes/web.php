@@ -45,5 +45,8 @@ Route::group(['prefix' => 'admission', 'as' => 'admission.'], function() {
     Route::post('/store', 'AdmissionController@store')->name('store');
 });
 
+Route::get('/profile', 'ProfileController@index')->name('profile');
+Route::get('/profile/edit', 'ProfileController@edit')->name('profile.edit');
+
 Route::get('/contact', 'ContactUsController@index');
 Route::post('/contact', 'ContactUsController@sendMail');

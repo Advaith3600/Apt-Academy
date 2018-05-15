@@ -13,31 +13,31 @@
                 <div class="card">
                     <div class="card-body p-0">
                         <ul class="mb-0 pl-0 list-style-none">
-                            <a href="{{ route('admin.admissions.index') }}" class="normalise-a">
-                                <li class="c-pointer px-3 py-2{{ Request::segment(2) == 'admissions' ? ' bg-success text-white' : ' text-hover-grey' }}">
+                            <li class="c-pointer px-3 py-2{{ Request::segment(2) == 'admissions' ? ' bg-success text-white' : ' text-hover-grey' }}" onclick="event.currentTarget.children[0].click()">
+                                <a href="{{ route('admin.admissions.index') }}" class="normalise-a">
                                     Manage Admission
-                                </li>
-                            </a>
-                            <a href="{{ route('admin.students.index') }}" class="normalise-a">
-                                <li class="c-pointer px-3 py-2{{ Request::segment(2) == 'students' ? ' bg-success text-white' : ' text-hover-grey' }}">
+                                </a>
+                            </li>
+                            <li class="c-pointer px-3 py-2{{ Request::segment(2) == 'students' ? ' bg-success text-white' : ' text-hover-grey' }}" onclick="event.currentTarget.children[0].click()">
+                                <a href="{{ route('admin.students.index') }}" class="normalise-a">
                                     Manage Students
-                                </li>
-                            </a>
-                            <a href="#" class="normalise-a">
-                                <li class="c-pointer text-hover-grey px-3 py-2">
+                                </a>
+                            </li>
+                            <li class="c-pointer text-hover-grey px-3 py-2" onclick="event.currentTarget.children[0].click()">
+                                <a href="#" class="normalise-a">
                                     Faculties
-                                </li>
-                            </a>
-                            <a href="#" class="normalise-a">
-                                <li class="c-pointer text-hover-grey px-3 py-2">
+                                </a>
+                            </li>
+                            <li class="c-pointer text-hover-grey px-3 py-2" onclick="event.currentTarget.children[0].click()">
+                                <a href="#" class="normalise-a">
                                     Guardians
-                                </li>
-                            </a>
-                            <a href="{{ route('admin.schools.index') }}" class="normalise-a">
-                                <li class="c-pointer px-3 py-2{{ Request::segment(2) == 'schools' ? ' bg-success text-white' : ' text-hover-grey' }}">
+                                </a>
+                            </li>
+                            <li class="c-pointer px-3 py-2{{ Request::segment(2) == 'schools' ? ' bg-success text-white' : ' text-hover-grey' }}" onclick="event.currentTarget.children[0].click()">
+                                <a href="{{ route('admin.schools.index') }}" class="normalise-a">
                                     Manage Schools
-                                </li>
-                            </a>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </div>

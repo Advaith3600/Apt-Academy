@@ -4,12 +4,10 @@
 
 @section('admin-content')
     <h3 class="d-flex justify-content-between">
-        <div>Manage Students</div>
-        <div>
-            <a href="{{ route('admin.students.register') }}" class="btn btn-outline-success btn-sm px-3">
-                Register
-            </a>
-        </div>
+        Manage Students
+        <a href="{{ route('admin.students.register') }}" class="btn btn-outline-success btn-sm px-3">
+            Register
+        </a>
     </h3>
 
     <table class="table border rounded">

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Mail;
 use Image;
 use Session;
 use App\School;
@@ -10,6 +11,7 @@ use App\Standard;
 use Carbon\Carbon;
 use App\Admission;
 use Illuminate\Http\Request;
+use App\Mail\RegistrationAccepted;
 
 class AdmissionController extends Controller
 {
@@ -97,6 +99,8 @@ class AdmissionController extends Controller
         ]);
 
         rename(public_path($admission->picture), public_path($newLocation));
+
+        Mail::to($admission->email)->send(new RegistrationAccepted($admission));
 
         Session::flash('Successfully accepted the admission request');
         return back();
