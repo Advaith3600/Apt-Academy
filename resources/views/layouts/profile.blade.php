@@ -8,13 +8,13 @@
             </div>
         @endif
 
-        <div class="d-md-flex">
+        <div class="row d-md-flex">
             <div class="col-md-3">
                 <div class="card">
                     <div class="card-body p-0">
                         <ul class="mb-0 pl-0 list-style-none">
                             <li class="c-pointer px-3 py-2{{ Request::is('profile') ? ' bg-success text-white' : ' text-hover-grey' }}" onclick="event.currentTarget.children[0].click()">
-                                <a href="{{ route('profile') }}" class="normalise-a ">
+                                <a href="{{ route('profile.index') }}" class="normalise-a ">
                                     View Profile
                                 </a>
                             </li>
@@ -22,6 +22,12 @@
                             <li class="c-pointer px-3 py-2{{ Request::is('profile/edit') ? ' bg-success text-white' : ' text-hover-grey' }}" onclick="event.currentTarget.children[0].click()">
                                 <a href="{{ route('profile.edit') }}" class="normalise-a ">
                                     Edit Profile
+                                </a>
+                            </li>
+
+                            <li class="c-pointer px-3 py-2{{ Request::is('profile/password') ? ' bg-success text-white' : ' text-hover-grey' }}" onclick="event.currentTarget.children[0].click()">
+                                <a href="{{ route('profile.password') }}" class="normalise-a ">
+                                    Change Password
                                 </a>
                             </li>
                         </ul>

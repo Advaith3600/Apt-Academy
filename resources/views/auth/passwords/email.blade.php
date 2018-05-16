@@ -71,7 +71,7 @@
 
 @section('js')
     <script>
-        var app = new Vue({
+        new Vue({
             el: '#app',
             data: {
                 guard: 'student'

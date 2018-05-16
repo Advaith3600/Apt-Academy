@@ -11,7 +11,15 @@
             </div>
         @endif
 
-        <div class="d-md-flex">
+        <div class="d-md-flex mt-3">
+            <div class="col-md-12">
+                <label for="school">Your Id:</label>
+
+                <input class="form-control" value="{{ Auth::guard(Guard::getLoggedInGuard())->user()->id }}" disabled>
+            </div>
+        </div>
+
+        <div class="d-md-flex mt-3">
             <div class="col-md-6">
                 <label for="name">Name:</label>
                 <input type="text" name="name" value="{{ Auth::guard(Guard::getLoggedInGuard())->user()->name }}" class="form-control" disabled>
@@ -32,8 +40,8 @@
 
                 @if (Guard::getLoggedInGuard() == 'student')
                     <div class="col-md-6 mt-3 mt-md-0">
-                        <label for="email">Email:</label>
-                        <input type="text" name="email" value="{{ Auth::guard(Guard::getLoggedInGuard())->user()->standard->class }} ({{ Auth::guard(Guard::getLoggedInGuard())->user()->standard->syllabus }})" class="form-control" disabled>
+                        <label for="standard">Standard:</label>
+                        <input type="text" name="standard" value="{{ Auth::guard(Guard::getLoggedInGuard())->user()->standard->class }} ({{ Auth::guard(Guard::getLoggedInGuard())->user()->standard->syllabus }})" class="form-control" disabled>
                     </div>
                 @endif
             </div>
@@ -42,7 +50,9 @@
         @if (Guard::getLoggedInGuard() == 'student')
             <div class="d-md-flex mt-3">
                 <div class="col-md-12">
-                    <input >
+                    <label for="school">Guardian Id:</label>
+
+                    <input class="form-control" value="{{ Auth::guard(Guard::getLoggedInGuard())->user()->guardian_id == null ? 'Guardian Not specified' : Auth::guard(Guard::getLoggedInGuard())->user()->guardian_id }}" disabled>
                 </div>
             </div>
         @endif

@@ -75,7 +75,7 @@
                         </li>
                     @else
                         <li class="mx-3">
-                            <a href="{{ route('profile') }}" class="d-flex{{ Request::is('profile') ? ' active' : '' }}">
+                            <a href="{{ route('profile.index') }}" class="d-flex{{ Request::segment(1) == 'profile' ? ' active' : '' }}">
                                 <span class="m-auto">{{ __('Profile') }}</span>
                             </a>
                         </li>

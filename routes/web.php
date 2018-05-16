@@ -45,8 +45,14 @@ Route::group(['prefix' => 'admission', 'as' => 'admission.'], function() {
     Route::post('/store', 'AdmissionController@store')->name('store');
 });
 
-Route::get('/profile', 'ProfileController@index')->name('profile');
-Route::get('/profile/edit', 'ProfileController@edit')->name('profile.edit');
+Route::group(['prefix' => 'profile', 'as' => 'profile.'], function() {
+    Route::get('/', 'ProfileController@index')->name('index');
+    Route::get('/edit', 'ProfileController@edit')->name('edit');
+    Route::put('/update', 'ProfileController@update')->name('update');
+    Route::get('/password', 'ProfileController@password')->name('password');
+    Route::put('/password/update', 'ProfileController@passwordUpdate')->name('password.update');
+    Route::post('/password/update/picture', 'ProfileController@passwordUpdatePicture');
+});
 
 Route::get('/contact', 'ContactUsController@index');
 Route::post('/contact', 'ContactUsController@sendMail');

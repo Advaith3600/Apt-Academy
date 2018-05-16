@@ -58,3 +58,22 @@ a:hover, a:active {
         height: 600px;
     }
 }
+
+// change profile picture
+.c-pointer-image:hover + div, .c-pointer-image + div:hover {
+    opacity: 1;
+}
+.profile-image {
+    display: flex;;
+    position: absolute;
+    top: 0;
+    width: 100px;
+    height: 100px;
+    background: rgba(0, 0, 0, .4);
+    color: #fff;
+    opacity: 0;
+    transition: .3s;
+    span {
+        margin: auto;
+    }
+}
