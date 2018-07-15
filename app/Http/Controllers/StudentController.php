@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Auth;
+use App\School;
+use App\Standard;
+use App\Student;
+use Carbon\Carbon;
+use Illuminate\Http\Request;
 use Image;
 use Session;
-use App\School;
-use App\Student;
-use App\Standard;
-use Illuminate\Http\Request;
 
 class StudentController extends Controller
 {
@@ -37,7 +37,7 @@ class StudentController extends Controller
             'email' => 'required|email',
             'standard' => 'required|integer',
             'picture' => 'required|image',
-            'school' => 'required|integer'
+            'school' => 'required|integer|not_in:0'
         ]);
 
         $filename = sha1(Carbon::now()) . '.' . $request->file('picture')->getClientOriginalExtension();

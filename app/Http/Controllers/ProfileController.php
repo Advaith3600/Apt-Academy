@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use Auth;
-use Hash;
-use Guard;
-use Session;
-use Storage;
+use App\Guardian;
 use App\School;
 use App\Standard;
+use Auth;
+use Guard;
+use Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\MessageBag;
+use Session;
+use Storage;
 
 class ProfileController extends Controller
 {
@@ -41,6 +42,23 @@ class ProfileController extends Controller
             'standard' => 'sometimes|integer',
             'guardian_email' => 'sometimes|nullable|email|max:191'
         ]);
+
+        $datas = [
+            'name' => $request->name,
+            'email' => $request->email,
+        ];
+
+        if (Guard::getLoggedInGuard() == ('student' || 'faculty')) {
+            $datas['school_id'] = $request->school;
+            $datas['bio'] = $request->bio;
+        }
+
+        if (Guard::getLoggedInGuard() == 'student') {
+            $datas['standard_id'] = $request->standard;
+            $datas['guardian_id'] = optional(Guardian::where('email', $request->email)->first())->id;
+        }
+
+        Auth::guard(Guard::getLoggedInGuard())->user()->update($datas);
 
         Session::flash('success', 'Successfully saved your information');
         return back();

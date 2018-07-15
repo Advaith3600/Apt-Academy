@@ -25,7 +25,7 @@
             <profile-picture v-on:uploaded="uploaded"></profile-picture>
         @endif
 
-        <div class="d-md-flex mt-3">
+        <div class="d-md-flex">
             <div class="form-group col-md-6">
                 <label for="name">Name:</label>
 
@@ -52,7 +52,7 @@
         </div>
 
         @if (Guard::getLoggedInGuard() == ('student' || 'faculty'))
-            <div class="d-md-flex mt-3">
+            <div class="d-md-flex">
                 <div class="{{ Guard::getLoggedInGuard() == 'student' ? 'col-md-6' : 'col-md-12' }}">
                     <label for="school">School:</label>
 
@@ -69,7 +69,7 @@
 
                         <select class="form-control" name="standard">
                             @foreach ($standards as $standard)
-                                <option value="{{ $standard->id }}" {{ $standard->id == Auth::guard(Guard::getLoggedInGuard())->user()->standard_id ? 'checked' : '' }}>{{ $standard->class }} ({{ $standard->syllabus }})</option>
+                                <option value="{{ $standard->id }}" {{ $standard->id == Auth::guard(Guard::getLoggedInGuard())->user()->standard_id ? 'selected' : '' }}>{{ $standard->class }} ({{ $standard->syllabus }})</option>
                             @endforeach
                         </select>
                     </div>
@@ -89,6 +89,16 @@
                             <strong>{{ $errors->first('guardian_email') }}</strong>
                         </span>
                     @endif
+                </div>
+            </div>
+        @endif
+
+        @if (Guard::getLoggedInGuard() == ('student' || 'faculty'))
+            <div class="d-flex">
+                <div class="col-md-12">
+                    <label for="bio">Bio:</label>
+
+                    <textarea class="form-control" name="bio" id="bio" placeholder="Explain yourself...">{{ Auth::guard(Guard::getLoggedInGuard())->user()->bio }}</textarea>
                 </div>
             </div>
         @endif

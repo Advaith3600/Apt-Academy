@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\MessageBag;
-use Illuminate\Support\Facades\Validator;
 
 class AdminController extends Controller
 {

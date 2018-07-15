@@ -8,7 +8,7 @@
             <div class="text-center">
                 <img class="shadow-sm rounded-circle" src="{{ asset(Auth::guard(Guard::getLoggedInGuard())->user()->profile_picture) }}" alt="Profile Picture" width="100" height="100" draggable="false">
                 <hr>
-            </div>
+            </div> 
         @endif
 
         <div class="d-md-flex mt-3">
@@ -52,7 +52,17 @@
                 <div class="col-md-12">
                     <label for="school">Guardian Id:</label>
 
-                    <input class="form-control" value="{{ Auth::guard(Guard::getLoggedInGuard())->user()->guardian_id == null ? 'Guardian Not specified' : Auth::guard(Guard::getLoggedInGuard())->user()->guardian_id }}" disabled>
+                    <input class="form-control" value="{{ Auth::guard(Guard::getLoggedInGuard())->user()->guardian_id ?? 'Guardian Not specified' }}" disabled>
+                </div>
+            </div>
+        @endif
+
+        @if (Guard::getLoggedInGuard() == ('student' || 'faculty'))
+            <div class="d-md-flex mt-3">
+                <div class="col-md-12">
+                    <label for="bio">Bio:</label>
+
+                    <textarea class="form-control" disabled>{{ Auth::guard(Guard::getLoggedInGuard())->user()->bio ?? 'Nothing given' }}</textarea>
                 </div>
             </div>
         @endif

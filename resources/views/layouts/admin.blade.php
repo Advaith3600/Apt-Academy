@@ -23,9 +23,9 @@
                                     Manage Students
                                 </a>
                             </li>
-                            <li class="c-pointer text-hover-grey px-3 py-2" onclick="event.currentTarget.children[0].click()">
-                                <a href="#" class="normalise-a">
-                                    Faculties
+                            <li class="c-pointer text-hover-grey px-3 py-2{{ Request::segment(2) == 'faculties' ? ' bg-success text-white' : ' text-hover-grey' }}" onclick="event.currentTarget.children[0].click()">
+                                <a href="{{ route('admin.faculties.index') }}" class="normalise-a">
+                                    Manage Faculties
                                 </a>
                             </li>
                             <li class="c-pointer text-hover-grey px-3 py-2" onclick="event.currentTarget.children[0].click()">

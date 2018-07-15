@@ -10,16 +10,16 @@
         </ol>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img class="d-block w-100 h-carousel" src="https://images.pexels.com/photos/459225/pexels-photo-459225.jpeg?auto=compress&cs=tinysrgb&h=350" alt="Apt Academy Image 1">
+                <img class="d-block w-100 h-carousel" src="https://picsum.photos/1280/720?random=0" alt="Apt Academy Image 1">
             </div>
             <div class="carousel-item">
-                <img class="d-block w-100 h-carousel" src="https://dummyimage.com/1280x720/000/fff.png&text=Apt+Academy" alt="Apt Academy Image 2">
+                <img class="d-block w-100 h-carousel" src="https://picsum.photos/1280/720?random=1" alt="Apt Academy Image 2">
             </div>
             <div class="carousel-item">
-                <img class="d-block w-100 h-carousel" src="https://dummyimage.com/1280x720/000/fff.png&text=Apt+Academy" alt="Apt Academy Image 3">
+                <img class="d-block w-100 h-carousel" src="https://picsum.photos/1280/720?random=2" alt="Apt Academy Image 3">
             </div>
             <div class="carousel-item">
-                <img class="d-block w-100 h-carousel" src="https://dummyimage.com/1280x720/000/fff.png&text=Apt+Academy" alt="Apt Academy Image 4">
+                <img class="d-block w-100 h-carousel" src="https://picsum.photos/1280/720?random=3" alt="Apt Academy Image 4">
             </div>
         </div>
         <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
