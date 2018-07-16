@@ -23,7 +23,7 @@
                     }
                 })
                 .then((response) => {
-                    this.$emit('uploaded', response.data);
+                    this.$emit('uploaded', '/' + response.data);
                 })
                 .catch((error) => {
                     document.querySelector('img.shadow-sm').classList.add('border');

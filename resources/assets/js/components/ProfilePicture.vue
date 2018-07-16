@@ -21,7 +21,7 @@
                     }
                 })
                 .then(function(response) {
-                    vm.$emit('uploaded', response.data);
+                    vm.$emit('uploaded', '/' + response.data);
                 })
                 .catch(function(error) {
                     document.querySelector('img.shadow-sm').classList.add('border');

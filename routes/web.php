@@ -20,7 +20,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::get('/', 'AdminController@index');
     Route::middleware('admin.guest')->get('/login', 'AdminController@showLoginForm')->name('login.form');
     Route::middleware('admin.guest')->post('/login', 'AdminController@login')->name('login');
-    Route::post('/update/profile_picture', 'AdminController@profile');
+    Route::post('/update/profile_picture', 'AdminController@profile')->name('profile_picture');
 
     Route::group(['prefix' => 'students', 'as' => 'students.'], function () {
         Route::get('/', 'StudentController@index')->name('index');

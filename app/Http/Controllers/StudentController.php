@@ -8,6 +8,7 @@ use App\Student;
 use Carbon\Carbon;
 use App\Guardian;
 use Illuminate\Http\Request;
+use ImageOptimizer;
 use Image;
 use Session;
 

@@ -21,10 +21,6 @@ class GuardHelper
 
     public static function check()
     {
-        $guards = [
-            'web', 'student', 'faculty', 'guardian', 'admin'
-        ];
-
         if (Auth::guard('student')->check() || Auth::guard('guardian')->check() || Auth::guard('faculty')->check() || Auth::guard('admin')->check() || Auth::guard('web')->check()) {
             return true;
         } else {

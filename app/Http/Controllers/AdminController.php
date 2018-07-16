@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Auth;
+use Image;
 use Storage;
+use ImageOptimizer;
 use Illuminate\Http\Request;
 use Illuminate\Support\MessageBag;
 
@@ -49,8 +51,9 @@ class AdminController extends Controller
 
         $image = $request->file('picture');
         $filename = sha1(time() . mt_rand()) . '.' . $image->getClientOriginalExtension();
-        $location = '/images/profiles/';
-        $image->move(public_path($location), $filename);
+        $location = 'images/profiles/';
+        Image::make($image)->fit(100, 100)->save(public_path($location . $filename));
+        ImageOptimizer::optimize($location . $filename);
 
         $picture = $request->model::find($request->id);
 

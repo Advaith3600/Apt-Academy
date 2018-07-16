@@ -10,6 +10,7 @@ use App\Student;
 use App\Standard;
 use Carbon\Carbon;
 use App\Admission;
+use ImageOptimizer;
 use Illuminate\Http\Request;
 use App\Mail\RegistrationAccepted;
 
@@ -47,7 +48,8 @@ class AdmissionController extends Controller
 
         $pfilename = sha1(Carbon::now()) . '.' . $request->file('picture')->getClientOriginalExtension();
         $plocation = public_path('images/admissions/' . $pfilename);
-        Image::make($request->file('picture'))->save($plocation);
+        Image::make($request->file('picture'))->fit(100, 100)->save($plocation);
+        ImageOptimizer::optimize($plocation);
         $psave = 'images/admissions/' . $pfilename;
 
         if ($request->hasFile('grades')) {
