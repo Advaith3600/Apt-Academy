@@ -57,4 +57,19 @@ class StudentController extends Controller
         Session::flash('success', 'Student registered successfully');
         return back();
     }
+
+    public function show(Student $student)
+    {
+        return view('admin.students.show')->withStudent($student);
+    }
+
+    public function edit(Student $student)
+    {
+        $standards = Standard::all();
+        $schools = School::all();
+
+        return view('admin.students.edit')->withStudent($student)
+                                          ->withStandards($standards)
+                                          ->withSchools($schools);
+    }
 }

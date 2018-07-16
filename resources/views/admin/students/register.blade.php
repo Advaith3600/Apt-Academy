@@ -121,7 +121,7 @@
         <div class="form-group mb-0">
             <div>
                 <button type="submit" class="btn btn-outline-success btn-block">
-                    {{ __('Send Request') }}
+                    {{ __('Register') }}
                 </button>
             </div>
         </div>

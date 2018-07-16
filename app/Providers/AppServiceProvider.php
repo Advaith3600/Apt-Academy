@@ -19,11 +19,17 @@ class AppServiceProvider extends ServiceProvider
         Schema::defaultStringLength(191);
 
         Blade::if('gauth', function () {
-            return Auth::guard('student')->check() || Auth::guard('guardian')->check() || Auth::guard('faculty')->check() || Auth::guard('admin')->check() || Auth::guard('web')->check();
+            return Auth::guard('student')->check() ||
+                   Auth::guard('guardian')->check() ||
+                   Auth::guard('faculty')->check() ||
+                   Auth::guard('admin')->check() ||
+                   Auth::guard('web')->check();
         });
 
         Blade::if('gguest', function () {
-            return Auth::guard('web')->guest() && Auth::guard('admin')->guest() && Auth::guard('faculty')->guest() && Auth::guard('student')->guest() && Auth::guard('guardian')->guest();
+            return Auth::guard('web')->guest() &&
+                   Auth::guard('admin')->guest() && Auth::guard('faculty')->guest() &&
+                   Auth::guard('student')->guest() && Auth::guard('guardian')->guest();
         });
     }
 

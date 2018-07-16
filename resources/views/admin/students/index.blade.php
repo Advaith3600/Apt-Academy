@@ -18,6 +18,7 @@
                 <th>Email</th>
                 <th>Standard</th>
                 <th>School</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -28,6 +29,11 @@
                     <td>{{ $student->email }}</td>
                     <td>{{ $student->standard->class }} ({{ $student->standard->syllabus }})</td>
                     <td>{{ $student->school->name }} ({{ $student->school->location }})</td>
+                    <td>
+                        <a href="{{ route('admin.students.show', $student->id) }}" class="btn btn-sm btn-outline-success">View</a>
+
+                        <a href="{{ route('admin.students.edit', $student->id) }}" class="btn btn-sm btn-outline-success">Edit</a>
+                    </td>
                 </tr>
             @empty
                 <tr class="text-center">
