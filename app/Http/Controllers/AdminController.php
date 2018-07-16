@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Auth;
+use Storage;
 use Illuminate\Http\Request;
 use Illuminate\Support\MessageBag;
 
@@ -33,10 +34,32 @@ class AdminController extends Controller
         if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password], $request->remember)) {
             return redirect()->intended('admin');
         }
-        
+
         $mb = new MessageBag;
         $mb->add('email', 'Oops! Something went wrong. Check your email and password again.');
 
         return redirect()->back()->withInput($request->only('email', 'remember'))->withErrors($mb);
+    }
+
+    public function profile(Request $request)
+    {
+        $request->validate([
+            'picture' => 'required|image'
+        ]);
+
+        $image = $request->file('picture');
+        $filename = sha1(time() . mt_rand()) . '.' . $image->getClientOriginalExtension();
+        $location = '/images/profiles/';
+        $image->move(public_path($location), $filename);
+
+        $picture = $request->model::find($request->id);
+
+        Storage::delete($picture->profile_picture);
+
+        $picture->update([
+            'profile_picture' => $location . $filename
+        ]);
+
+        return $location . $filename;
     }
 }

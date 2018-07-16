@@ -4,11 +4,11 @@
 
 @section('profile-content')
     <div>
-        @if (Guard::getLoggedInGuard() == ('student' || 'faculty'))
+        @if (Guard::getLoggedInGuard() == 'student' || Guard::getLoggedInGuard() == 'faculty')
             <div class="text-center">
                 <img class="shadow-sm rounded-circle" src="{{ asset(Auth::guard(Guard::getLoggedInGuard())->user()->profile_picture) }}" alt="Profile Picture" width="100" height="100" draggable="false">
                 <hr>
-            </div> 
+            </div>
         @endif
 
         <div class="d-md-flex mt-3">
@@ -31,7 +31,7 @@
             </div>
         </div>
 
-        @if (Guard::getLoggedInGuard() == ('student' || 'faculty'))
+        @if (Guard::getLoggedInGuard() == 'student' || Guard::getLoggedInGuard() == 'faculty')
             <div class="d-md-flex mt-3">
                 <div class="{{ Guard::getLoggedInGuard() == 'student' ? 'col-md-6' : 'col-md-12' }}">
                     <label for="school">School:</label>
@@ -57,7 +57,7 @@
             </div>
         @endif
 
-        @if (Guard::getLoggedInGuard() == ('student' || 'faculty'))
+        @if (Guard::getLoggedInGuard() == 'student' || Guard::getLoggedInGuard() == 'faculty')
             <div class="d-md-flex mt-3">
                 <div class="col-md-12">
                     <label for="bio">Bio:</label>

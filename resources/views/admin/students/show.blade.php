@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', "Manage Students - $student->id | ")
+@section('title', "View Student $student->id | ")
 
 @section('admin-content')
     <div>

@@ -7,7 +7,7 @@
         @csrf
         @method('PUT')
 
-        @if (Guard::getLoggedInGuard() == ('student' || 'faculty'))
+        @if (Guard::getLoggedInGuard() == 'student' || Guard::getLoggedInGuard() == 'faculty')
             <div class="d-flex p-relative">
                 <div class="m-auto">
                     <img class="shadow-sm rounded-circle c-pointer c-pointer-image" :src="picture" alt="Profile Picture" width="100" height="100" draggable="false" v-on:click="click">
@@ -29,7 +29,7 @@
             <div class="form-group col-md-6">
                 <label for="name">Name:</label>
 
-                <input required type="text" name="name" value="{{ Auth::guard(Guard::getLoggedInGuard())->user()->name }}" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}">
+                <input required type="text" name="name" value="{{ Auth::guard(Guard::getLoggedInGuard())->user()->name }}" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="Name">
 
                 @if ($errors->has('name'))
                     <span class="invalid-feedback">
@@ -41,7 +41,7 @@
             <div class="col-md-6 form-group mt-3 mt-md-0">
                 <label for="email">Email:</label>
 
-                <input required type="email" name="email" value="{{ Auth::guard(Guard::getLoggedInGuard())->user()->email }}" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}">
+                <input required type="email" name="email" value="{{ Auth::guard(Guard::getLoggedInGuard())->user()->email }}" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="Email">
 
                 @if ($errors->has('email'))
                     <span class="invalid-feedback">
@@ -51,7 +51,7 @@
             </div>
         </div>
 
-        @if (Guard::getLoggedInGuard() == ('student' || 'faculty'))
+        @if (Guard::getLoggedInGuard() == 'student' || Guard::getLoggedInGuard() == 'faculty')
             <div class="d-md-flex">
                 <div class="{{ Guard::getLoggedInGuard() == 'student' ? 'col-md-6' : 'col-md-12' }}">
                     <label for="school">School:</label>
@@ -93,7 +93,7 @@
             </div>
         @endif
 
-        @if (Guard::getLoggedInGuard() == ('student' || 'faculty'))
+        @if (Guard::getLoggedInGuard() == 'student' || Guard::getLoggedInGuard() == 'faculty')
             <div class="d-flex">
                 <div class="col-md-12">
                     <label for="bio">Bio:</label>

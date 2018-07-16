@@ -6,6 +6,7 @@ use App\School;
 use App\Standard;
 use App\Student;
 use Carbon\Carbon;
+use App\Guardian;
 use Illuminate\Http\Request;
 use Image;
 use Session;
@@ -71,5 +72,28 @@ class StudentController extends Controller
         return view('admin.students.edit')->withStudent($student)
                                           ->withStandards($standards)
                                           ->withSchools($schools);
+    }
+
+    public function update(Student $student, Request $request)
+    {
+        $request->validate([
+            'name' => 'required|max:191',
+            'email' => 'required|email|max:191',
+            'school' => 'required|integer',
+            'standard' => 'required|integer',
+            'guardian_email' => 'sometimes|nullable|email|max:191'
+        ]);
+
+        $student->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'school_id' => $request->school,
+            'bio' => $request->bio,
+            'standard_id' => $request->standard,
+            'guardian_id' => optional(Guardian::where('email', $request->email)->first())->id
+        ]);
+
+        Session::flash('success', 'Successfully saved your information');
+        return back();
     }
 }

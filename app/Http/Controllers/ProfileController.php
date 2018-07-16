@@ -48,7 +48,7 @@ class ProfileController extends Controller
             'email' => $request->email,
         ];
 
-        if (Guard::getLoggedInGuard() == ('student' || 'faculty')) {
+        if (Guard::getLoggedInGuard() == 'student' || Guard::getLoggedInGuard() == 'faculty') {
             $datas['school_id'] = $request->school;
             $datas['bio'] = $request->bio;
         }
