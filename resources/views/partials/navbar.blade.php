@@ -8,7 +8,7 @@
             </span>
         </div>
         <div class="m-auto">
-            <img src="{{ asset('images/logo.png') }}" alt="Apt logo" draggable="false" class="apt-logo">
+            <img src="{{ asset('images/logo.svg') }}" alt="Apt logo" draggable="false" class="apt-logo">
         </div>
         <div class="aj-navbar-right text-dim number-font">
             <i class="far fa-calendar-alt"></i>

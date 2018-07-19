@@ -8,24 +8,31 @@
     export default {
         methods: {
             handleFileUpload: function(event) {
+                this.$emit('uploading', true);
                 document.querySelector('img.shadow-sm').classList.remove('border');
                 document.querySelector('img.shadow-sm').classList.remove('border-danger');
 
-                let vm = this;
                 let data = new FormData();
                 data.append('picture', this.$refs.file.files[0]);
 
                 axios.post('/profile/password/update/picture', data, {
                     headers: {
                         'Content-Type': 'multipart/form-data'
+                    },
+                    onUploadProgress: (progressEvent) => {
+                        this.$emit('progress', [
+                            progressEvent.loaded, progressEvent.total
+                        ]);
                     }
                 })
-                .then(function(response) {
-                    vm.$emit('uploaded', '/' + response.data);
+                .then((response) => {
+                    this.$emit('uploaded', response.data);
+                    this.$emit('uploading', false);
                 })
-                .catch(function(error) {
+                .catch((error) => {
                     document.querySelector('img.shadow-sm').classList.add('border');
                     document.querySelector('img.shadow-sm').classList.add('border-danger');
+                    this.$emit('uploading', false);
                 });
             },
         }

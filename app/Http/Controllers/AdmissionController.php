@@ -48,7 +48,7 @@ class AdmissionController extends Controller
 
         $pfilename = sha1(Carbon::now()) . '.' . $request->file('picture')->getClientOriginalExtension();
         $plocation = public_path('images/admissions/' . $pfilename);
-        Image::make($request->file('picture'))->fit(100, 100)->save($plocation);
+        Image::make($request->file('picture'))->fit(200, 200)->save($plocation);
         ImageOptimizer::optimize($plocation);
         $psave = 'images/admissions/' . $pfilename;
 
@@ -56,6 +56,7 @@ class AdmissionController extends Controller
             $gfilename = sha1(Carbon::now()->addSecond()) . '.' . $request->file('picture')->getClientOriginalExtension();
             $glocation = public_path('images/grades/' . $gfilename);
             Image::make($request->file('grades'))->save($glocation);
+            ImageOptimizer::optimize($glocation);
             $gsave = 'images/admissions/' . $gfilename;
         }
 
@@ -73,17 +74,15 @@ class AdmissionController extends Controller
         return back();
     }
 
-    public function show($id)
+    public function show(Admission $admission)
     {
         $standards = Standard::all();
         $schools = School::all();
-        $admission = Admission::find($id);
         return view('admin.admissions.show')->withAdmission($admission)->withStandards($standards)->withSchools($schools);
     }
 
-    public function accept($id)
+    public function accept(Admission $admission)
     {
-        $admission = Admission::find($id);
         $newLocation = '/images/profiles/' . explode('/', $admission->picture)[2];
 
         Student::create([
@@ -95,16 +94,16 @@ class AdmissionController extends Controller
             'password' => bcrypt(strtolower($admission->name) . '@apt')
         ]);
 
+        rename(public_path($admission->picture), public_path($newLocation));
+
         $admission->update([
             'accepted' => true,
             'picture' => $newLocation
         ]);
 
-        rename(public_path($admission->picture), public_path($newLocation));
-
         Mail::to($admission->email)->send(new RegistrationAccepted($admission));
 
-        Session::flash('Successfully accepted the admission request');
-        return back();
+        Session::flash('success', 'Successfully accepted the admission request');
+        return redirect()->route('admin.admissions.');
     }
 }

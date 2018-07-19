@@ -81,7 +81,7 @@ class ProfileController extends Controller
             'profile_picture' => $location . $filename
         ]);
 
-        return $location . $filename;
+        return asset($location . $filename);
     }
 
     public function password()

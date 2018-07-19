@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Guardian;
 use App\School;
 use App\Standard;
 use App\Student;
 use Carbon\Carbon;
-use App\Guardian;
 use Illuminate\Http\Request;
-use ImageOptimizer;
 use Image;
 use Session;
+use ImageOptimizer;
 
 class StudentController extends Controller
 {
@@ -43,9 +43,10 @@ class StudentController extends Controller
         ]);
 
         $filename = sha1(Carbon::now()) . '.' . $request->file('picture')->getClientOriginalExtension();
-        $location = public_path('images/admissions/' . $filename);
-        Image::make($request->file('picture'))->save($location);
-        $save = 'images/admissions/' . $filename;
+        $location = public_path('images/profiles/' . $filename);
+        Image::make($request->file('picture'))->fit(100, 100)->save($location);
+        ImageOptimizer::optimize($location);
+        $save = 'images/profiles/' . $filename;
 
         Student::create([
             'name' => $request->name,

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Welcome to the offical website of Apt Academy Ambalathara. Get all the details of your childrens activity and performance through here.">
     <meta name="keywords" content="apt,academy,tuition,online,admission,ambalathara">
-    <link rel="icon" href="favicon.ico">
+    <link rel="icon" href="{{ asset('favicon.ico') }}">
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">

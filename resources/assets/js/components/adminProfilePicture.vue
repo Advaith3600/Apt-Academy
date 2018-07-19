@@ -9,6 +9,7 @@
         props: ['model', 'id'],
         methods: {
             handleFileUpload: function(event) {
+                this.$emit('uploading', true);
                 document.querySelector('img.shadow-sm').classList.remove('border');
                 document.querySelector('img.shadow-sm').classList.remove('border-danger');
 
@@ -20,14 +21,21 @@
                 axios.post('/admin/update/profile_picture', data, {
                     headers: {
                         'Content-Type': 'multipart/form-data'
+                    },
+                    onUploadProgress: (progressEvent) => {
+                        this.$emit('progress', [
+                            progressEvent.loaded, progressEvent.total
+                        ]);
                     }
                 })
                 .then((response) => {
-                    this.$emit('uploaded', '/' + response.data);
+                    this.$emit('uploaded', response.data);
+                    this.$emit('uploading', false);
                 })
                 .catch((error) => {
                     document.querySelector('img.shadow-sm').classList.add('border');
                     document.querySelector('img.shadow-sm').classList.add('border-danger');
+                    this.$emit('uploading', false);
                 });
             },
         }

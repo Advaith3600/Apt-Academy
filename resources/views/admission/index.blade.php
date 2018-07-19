@@ -62,7 +62,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="standard" class="col-form-label">{{ __('Next Standard:') }}</label>
+                                <label for="standard" class="col-form-label">{{ __('Standard:') }}</label>
 
                                 <div class="input-group">
                                     <div class="input-group-prepend">

@@ -8,11 +8,19 @@
         @method('PUT')
 
         @if (Guard::getLoggedInGuard() == 'student' || Guard::getLoggedInGuard() == 'faculty')
+            <div class="mb-3 number-font" v-if="upload.state">
+                <span v-text="(upload.done / 1024000).toFixed(3)"></span> MB /
+                <span v-text="(upload.total / 1024000).toFixed(3)"></span> MB
+                <div class="progress">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" :aria-valuenow="uploadPercent" aria-valuemin="0" aria-valuemax="100" :style="'width: ' + uploadPercent + '%;'"></div>
+                </div>
+            </div>
+
             <div class="d-flex p-relative">
                 <div class="m-auto">
-                    <img class="shadow-sm rounded-circle c-pointer c-pointer-image" :src="picture" alt="Profile Picture" width="100" height="100" draggable="false" v-on:click="click">
+                    <img class="shadow-sm rounded-circle c-pointer c-pointer-image d-flex" :src="picture" alt="Profile Picture" width="100" height="100" draggable="false" v-on:click="click">
 
-                    <div class="profile-image c-pointer rounded-circle" v-on:click="click">
+                    <div v-if="!upload.state" class="profile-image c-pointer rounded-circle" v-on:click="click">
                         <span>
                             <i class="fas fa-image fa-2x"></i>
                         </span>
@@ -22,7 +30,7 @@
 
             <hr>
 
-            <profile-picture v-on:uploaded="uploaded"></profile-picture>
+            <profile-picture v-on:uploaded="uploaded" v-on:progress="updateProgress" v-on:uploading="updateUploading"></profile-picture>
         @endif
 
         <div class="d-md-flex">
@@ -115,7 +123,12 @@
         new Vue({
             el: '#app',
             data: {
-                picture: '{{ asset(Auth::guard(Guard::getLoggedInGuard())->user()->profile_picture) }}'
+                picture: '{{ asset(Auth::guard(Guard::getLoggedInGuard())->user()->profile_picture) }}',
+                upload: {
+                    state: false,
+                    total: 0,
+                    done: 0
+                }
             },
             methods: {
                 click: function() {
@@ -123,6 +136,22 @@
                 },
                 uploaded: function(uri) {
                     this.picture = uri;
+                },
+                updateProgress: function (array) {
+                    this.upload.total = array[1];
+                    this.upload.done = array[0];
+                },
+                updateUploading: function (boolean) {
+                    this.upload.state = boolean;
+                }
+            },
+            computed: {
+                uploadPercent: function () {
+                    if (this.upload.total == 0) {
+                        return 0;
+                    }
+
+                    return (this.upload.done / this.upload.total) * 100;
                 }
             }
         });

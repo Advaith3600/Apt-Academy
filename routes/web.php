@@ -26,9 +26,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::get('/', 'StudentController@index')->name('index');
         Route::get('/register', 'StudentController@register')->name('register');
         Route::post('/store', 'StudentController@store')->name('store');
-        Route::get('/view/{id}', 'StudentController@show')->name('show');
-        Route::get('/edit/{id}', 'StudentController@edit')->name('edit');
-        Route::put('/update/{id}', 'StudentController@update')->name('update');
+        Route::get('/view/{student}', 'StudentController@show')->name('show');
+        Route::get('/edit/{student}', 'StudentController@edit')->name('edit');
+        Route::put('/update/{student}', 'StudentController@update')->name('update');
     });
 
     Route::group(['prefix' => 'schools', 'as' => 'schools.'], function () {
@@ -39,8 +39,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
     Route::group(['prefix' => 'admissions', 'as' => 'admissions.'], function () {
         Route::get('/', 'AdmissionController@index')->name('index');
-        Route::get('/{id}/view', 'AdmissionController@show')->name('show');
-        Route::put('/{id}/accept', 'AdmissionController@accept')->name('accept');
+        Route::get('/{admission}/view', 'AdmissionController@show')->name('show');
+        Route::put('/{admission}/accept', 'AdmissionController@accept')->name('accept');
     });
 
     Route::group(['prefix' => 'faculties', 'as' => 'faculties.'], function () {
