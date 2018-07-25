@@ -17,7 +17,7 @@ class CreateAdmissionsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('email')->unique();
-            $table->boolean('accepted')->default(false);
+            $table->boolean('accepted')->nullable();
             $table->text('note');
             $table->string('picture');
             $table->string('grades')->nullable();

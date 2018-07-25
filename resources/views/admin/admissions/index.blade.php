@@ -3,10 +3,26 @@
 @section('title', "Manage Admissions | ")
 
 @section('admin-content')
-    <h3>Manage Admissions</h3>
+    <div class="d-flex justify-content-between">
+        <h3>Manage Admissions</h3>
+
+        <form action="{{ Request::url() }}">
+            <div class="input-group input-group-sm">
+                <select name="sort" class="form-control">
+                    <option value="0">View all pending requests</option>
+                    <option value="1" {{ isset($_GET['sort']) && $_GET['sort'] == 1 ? 'selected' : '' }}>View all accepted requests</option>
+                    <option value="2" {{ isset($_GET['sort']) && $_GET['sort'] == 2 ? 'selected' : '' }}>View all rejected requests</option>
+                </select>
+
+                <button class="input-group-append btn btn-success btn-sm align-items-center">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </form>
+    </div>
 
     <div class="w-100 o-auto">
-        <table class="table border rounded">
+        <table class="table border rounded mb-0">
             <thead>
                 <tr>
                     <th>Name</th>
@@ -46,5 +62,7 @@
                 @endforelse
             </tbody>
         </table>
+
+        {{ $admissions->links() }}
     </div>
 @endsection

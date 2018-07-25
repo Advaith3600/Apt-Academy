@@ -30,6 +30,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::get('/', 'AdmissionController@index')->name('index');
         Route::get('/{admission}/view', 'AdmissionController@show')->name('show');
         Route::put('/{admission}/accept', 'AdmissionController@accept')->name('accept');
+        Route::put('/{admission}/reject', 'AdmissionController@reject')->name('reject');
     });
 
     Route::group(['prefix' => 'faculties', 'as' => 'faculties.'], function () {

@@ -26,7 +26,7 @@
                     margin: 0!important;
                     a {
                         padding: 15px 0;
-                        width: 100%;
+                        width: 268px;
                         color: rgba(0, 0, 0, .6);
                         &:hover, &.active {
                             color: #00a79d;
@@ -113,9 +113,11 @@
 .aj-navbar-left {
     left: 20px;
     span {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         width: 36px;
         height: 36px;
-        line-height: 36px;
         border: 1px solid rgba(0, 0, 0, .4);
         border-radius: 50%;
         padding: 0;

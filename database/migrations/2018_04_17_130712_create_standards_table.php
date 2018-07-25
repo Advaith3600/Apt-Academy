@@ -17,11 +17,10 @@ class CreateStandardsTable extends Migration
             $table->increments('id');
             $table->string('syllabus')->nullable();
             $table->string('class');
-            $table->timestamps();
         });
 
         $syllabus = ['CBSE', 'State'];
-        $classes = [8, 9, 10, 11, 12];
+        $classes = [8, 9, 10, '11 Science', '11 Commerce', '12 Science', '12 Commerce'];
         $extras = [['B.com', null], ['English Special', 'Grammar']];
 
         foreach ($syllabus as $syl) {

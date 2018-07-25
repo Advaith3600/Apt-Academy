@@ -80,13 +80,23 @@
                     </div>
                 </div>
 
-                <div class="form-group mb-0">
-                    <div>
+                <div class="d-flex form-group mb-0">
+                    <div class="mr-2">
                         <form action="{{ route('admin.admissions.accept', $admission->id) }}" method="POST">
                             @csrf
                             @method('PUT')
                             <button type="submit" class="btn btn-outline-success px-3">
                                 {{ __('Accept Admission') }}
+                            </button>
+                        </form>
+                    </div>
+
+                    <div>
+                        <form action="{{ route('admin.admissions.reject', $admission->id) }}" method="POST">
+                            @csrf
+                            @method('PUT')
+                            <button type="submit" class="btn btn-outline-danger px-3">
+                                {{ __('Reject Admission') }}
                             </button>
                         </form>
                     </div>

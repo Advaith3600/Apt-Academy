@@ -18,8 +18,8 @@
 
     <nav class="navbar bg-white py-0 border-bottom shadow-sm navbar-bottom">
         <a href="#" class="close-nav d-flex">
-            <span class="m-auto">
-                <i class="fas fa-times"></i>
+            <span class="m-auto d-flex align-items-center">
+                <i class="fas fa-times mr-2"></i>
                 Close
             </span>
         </a>

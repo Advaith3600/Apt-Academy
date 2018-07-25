@@ -7,7 +7,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class RegistrationAccepted extends Mailable
+class RegistrationRejected extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -30,6 +30,6 @@ class RegistrationAccepted extends Mailable
      */
     public function build()
     {
-        return $this->markdown('mails.accept');
+        return $this->markdown('mails.reject');
     }
 }

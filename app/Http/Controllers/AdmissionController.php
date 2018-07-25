@@ -2,17 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use Mail;
-use Image;
-use Session;
-use App\School;
-use App\Student;
-use App\Standard;
-use Carbon\Carbon;
 use App\Admission;
-use ImageOptimizer;
-use Illuminate\Http\Request;
 use App\Mail\RegistrationAccepted;
+use App\School;
+use App\Standard;
+use App\Student;
+use Carbon\Carbon;
+use Illuminate\Http\Request;
+use Image;
+use ImageOptimizer;
+use Mail;
+use App\Mail\RegistrationRejected;
+use Session;
 
 class AdmissionController extends Controller
 {
@@ -21,9 +22,23 @@ class AdmissionController extends Controller
         return $this->middleware('admin.auth', ['except' => ['create', 'store']]);
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $admissions = Admission::where('accepted', '!=', true)->get();
+        $admissions = Admission::orderBy('id', 'desc');
+        $sort = null;
+
+        if (isset($request->sort)) {
+            if ($request->sort == 1) {
+                $sort = true;
+            }
+
+            if ($request->sort == 2) {
+                $sort = false;
+            }
+        }
+
+        $admissions = $admissions->where('accepted', '=', $sort)->paginate(10);
+
         return view('admin.admissions.index')->withAdmissions($admissions);
     }
 
@@ -104,6 +119,18 @@ class AdmissionController extends Controller
         Mail::to($admission->email)->send(new RegistrationAccepted($admission));
 
         Session::flash('success', 'Successfully accepted the admission request');
+        return redirect()->route('admin.admissions.');
+    }
+
+    public function reject(Admission $admission)
+    {
+        $admission->update([
+            'accepted' => false
+        ]);
+
+        Mail::to($admission->email)->send(new RegistrationRejected($admission));
+
+        Session::flash('success', 'Successfully rejected the admission request');
         return redirect()->route('admin.admissions.');
     }
 }
