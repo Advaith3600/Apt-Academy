@@ -32,12 +32,12 @@
         <div class="d-md-flex mt-3">
             <div class="col-md-6">
                 <label for="school">School:</label>
-                <input type="text" name="school" value="{{ $student->school->name }} ({{ $student->school->location }})" class="form-control" disabled>
+                <input type="text" name="school" value="{{ optional($student->school)->name ?? 'Other' }} @if (optional($student->school)->location != null)({{ $student->school->location }}) @endif" class="form-control" disabled>
             </div>
 
             <div class="col-md-6 mt-3 mt-md-0">
                 <label for="standard">Standard:</label>
-                <input type="text" name="standard" value="{{ $student->standard->class }} ({{ $student->standard->syllabus }})" class="form-control" disabled>
+                <input type="text" name="standard" value="{{ $student->standard->class }} @if ($student->standard->syllabus != null) ({{ $student->standard->syllabus }}) @endif" class="form-control" disabled>
             </div>
         </div>
 

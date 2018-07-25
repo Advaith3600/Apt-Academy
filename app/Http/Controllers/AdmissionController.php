@@ -40,7 +40,7 @@ class AdmissionController extends Controller
             'name' => 'required|max:191',
             'email' => 'required|email|unique:admissions|unique:students|unique:faculties|unique:guardians|unique:admins|unique:users',
             'standard' => 'not_in:0|integer',
-            'school' => 'not_in:0|integer',
+            'school' => 'integer',
             'picture' => 'required|image',
             'grades' => 'sometimes|image',
             'note' => 'required|min:10'
@@ -64,7 +64,7 @@ class AdmissionController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'standard_id' => $request->standard,
-            'school_id' => $request->school,
+            'school_id' => $request->school == 0 ? null : $request->School,
             'picture' => $psave,
             'grades' => ($request->hasFile('grades') ? $gsave : null),
             'note' => $request->note

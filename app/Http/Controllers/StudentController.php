@@ -19,10 +19,25 @@ class StudentController extends Controller
         return $this->middleware('admin.auth');
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $students = Student::all();
-        return view('admin.students.index')->withStudents($students);
+        $students = Student::orderBy('id', 'desc');
+
+        if (isset($request->name) && !empty($request->name)) {
+            $students = $students->where('name', 'LIKE', '%' . $request->name . '%');
+        }
+
+        if (isset($request->standard) && !empty($request->standard)) {
+            $students = $students->whereHas('standard', function ($query) use ($request) {
+                $query->where('id', '=', $request->standard);
+            });
+        }
+
+        $students = $students->paginate(10);
+        
+        $standards = Standard::all();
+
+        return view('admin.students.index')->withStudents($students)->withStandards($standards);
     }
 
     public function register()
@@ -89,7 +104,7 @@ class StudentController extends Controller
         $student->update([
             'name' => $request->name,
             'email' => $request->email,
-            'school_id' => $request->school,
+            'school_id' => $request->school == 0 ? null : $request->school,
             'bio' => $request->bio,
             'standard_id' => $request->standard,
             'guardian_id' => optional(Guardian::where('email', $request->email)->first())->id

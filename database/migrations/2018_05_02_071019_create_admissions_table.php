@@ -24,7 +24,7 @@ class CreateAdmissionsTable extends Migration
             $table->timestamps();
 
             $table->integer('standard_id')->unsigned();
-            $table->integer('school_id')->unsigned();
+            $table->integer('school_id')->unsigned()->nullable();
         });
     }
 

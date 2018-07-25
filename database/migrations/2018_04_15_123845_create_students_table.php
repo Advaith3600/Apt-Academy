@@ -25,7 +25,7 @@ class CreateStudentsTable extends Migration
             $table->timestamps();
 
             $table->integer('guardian_id')->unsigned()->nullable();
-            $table->integer('school_id')->unsigned();
+            $table->integer('school_id')->unsigned()->nullable();
             $table->integer('standard_id')->unsigned();
         });
     }

@@ -21,8 +21,18 @@
                     <tr>
                         <td>{{ $admission->name }}</td>
                         <td>{{ $admission->email }}</td>
-                        <td>{{ $admission->standard->class }} ({{ $admission->standard->syllabus }})</td>
-                        <td>{{ $admission->school->name }} ({{ $admission->school->location }})</td>
+                        <td>
+                            {{ $admission->standard->class }}
+                            @if ($admission->standard->syllabus != null)
+                                ({{ $admission->standard->syllabus }})
+                            @endif
+                        </td>
+                        <td>
+                            {{ optional($admission->school)->name ?? 'Other' }} 
+                            @if (optional($admission->school)->location != null)
+                                ({{ $admission->school->location }})
+                            @endif
+                        </td>
                         <td>
                             <a href="{{ route('admin.admissions.show', $admission->id) }}" class="btn btn-outline-success btn-sm px-3">
                                 View

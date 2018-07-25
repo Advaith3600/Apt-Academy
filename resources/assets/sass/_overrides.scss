@@ -1,0 +1,30 @@
+a, .btn.btn-link {
+    color: #28a745;
+}
+
+a:hover, a:active {
+    color: var(--green);
+}
+
+.form-control:focus {
+    border-color: var(--success);
+    box-shadow: 0 0 0 0.2rem rgba(100, 255, 100, 0.25);
+}
+
+.pagination {
+	margin-bottom: 0;
+	margin-top: 1rem;
+
+	.page-link {
+		color: var(--green);
+	}
+
+	.page-item.active .page-link {
+		background-color: var(--green);
+		border-color: var(--green);
+	}
+
+	.page-link:focus {
+		box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.5);
+	}
+}

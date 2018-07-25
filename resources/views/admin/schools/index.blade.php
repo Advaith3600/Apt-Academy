@@ -29,5 +29,7 @@
                 @endforelse
             </tbody>
         </table>
+
+        {{ $schools->links() }}
     </div>
 @endsection

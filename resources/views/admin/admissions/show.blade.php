@@ -54,7 +54,7 @@
                             </span>
                         </div>
 
-                        <input type="text" disabled class="form-control" value="{{ $admission->standard->class }} ({{ $admission->standard->syllabus }})">
+                        <input type="text" disabled class="form-control" value="{{ $admission->standard->class }} @if ($admission->standard->syllabus != null) ({{ $admission->standard->syllabus }}) @endif">
                     </div>
                 </div>
 
@@ -68,7 +68,7 @@
                             </span>
                         </div>
 
-                        <input type="text" class="form-control" disabled value="{{ $admission->school->name }} ({{ $admission->school->location }})">
+                        <input type="text" class="form-control" disabled value="{{ optional($admission->school)->name ?? 'Other' }} @if (optional($admission->school)->location != null) ({{ $admission->school->location }}) @endif">
                     </div>
                 </div>
 

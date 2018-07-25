@@ -24,7 +24,7 @@
             <label for="location" class="col-form-label">{{ __('School Location') }}</label>
 
             <div class="input-group">
-                <input required id="location" type="text" class="form-control{{ $errors->has('location') ? ' is-invalid' : '' }}" name="location" value="{{ old('location') }}" placeholder="Location">
+                <input id="location" type="text" class="form-control{{ $errors->has('location') ? ' is-invalid' : '' }}" name="location" value="{{ old('location') }}" placeholder="Location">
 
                 @if ($errors->has('location'))
                     <span class="invalid-feedback">

@@ -15,13 +15,14 @@ class CreateStandardsTable extends Migration
     {
         Schema::create('standards', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('syllabus');
-            $table->integer('class');
+            $table->string('syllabus')->nullable();
+            $table->string('class');
             $table->timestamps();
         });
 
         $syllabus = ['CBSE', 'State'];
         $classes = [8, 9, 10, 11, 12];
+        $extras = [['B.com', null], ['English Special', 'Grammar']];
 
         foreach ($syllabus as $syl) {
             foreach ($classes as $class) {
@@ -32,6 +33,15 @@ class CreateStandardsTable extends Migration
                     ]
                 );
             }
+        }
+
+        foreach ($extras as $extra) {
+            DB::table('standards')->insert(
+                [
+                    'syllabus' => $extra[1],
+                    'class' => $extra[0]
+                ]
+            );
         }
     }
 

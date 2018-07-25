@@ -14,6 +14,9 @@
 // Navbar
 @import "navbar";
 
+// Overrides
+@import "overrides";
+
 // Footer
 footer {
     position: fixed;
@@ -24,18 +27,6 @@ footer {
     text-align: center;
     padding: 8px 0;
     border-top: 3px solid var(--green);
-}
-
-// default styles
-a, .btn.btn-link {
-    color: #28a745;
-}
-a:hover, a:active {
-    color: var(--green);
-}
-.form-control:focus {
-    border-color: var(--success);
-    box-shadow: 0 0 0 0.2rem rgba(100, 255, 100, 0.25);
 }
 
 // carousel styles

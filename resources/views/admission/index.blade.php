@@ -74,7 +74,12 @@
                                     <select class="form-control{{ $errors->has('standard') ? ' is-invalid' : '' }}" name="standard">
                                         <option value="0">Select the standard you want to take admission</option>
                                         @foreach ($standards as $standard)
-                                            <option value="{{ $standard->id }}">{{ $standard->class }} ({{ $standard->syllabus }})</option>
+                                            <option value="{{ $standard->id }}">
+                                                {{ $standard->class }}
+                                                @if ($standard->syllabus != null)
+                                                    ({{ $standard->syllabus }})
+                                                @endif
+                                            </option>
                                         @endforeach
                                     </select>
 
@@ -139,10 +144,16 @@
                                     </div>
 
                                     <select class="form-control{{ $errors->has('school') ? ' is-invalid' : '' }}" name="school">
-                                        <option value="0">Select School</option>
+                                        <option>Select School</option>
                                         @foreach ($schools as $school)
-                                            <option value="{{ $school->id }}">{{ $school->name }} ({{ $school->location }})</option>
+                                            <option value="{{ $school->id }}">
+                                                {{ $school->name }}
+                                                @if ($school->location != null)
+                                                    ({{ $school->location }})
+                                                @endif
+                                            </option>
                                         @endforeach
+                                        <option value="0">Other</option>
                                     </select>
 
                                     @if ($errors->has('school'))

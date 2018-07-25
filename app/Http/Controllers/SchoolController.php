@@ -15,7 +15,7 @@ class SchoolController extends Controller
     
     public function index()
     {
-        $schools = School::all();
+        $schools = School::paginate(10);
         return view('admin.schools.index')->withSchools($schools);
     }
 
@@ -27,8 +27,7 @@ class SchoolController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|max:191',
-            'location' => 'required'
+            'name' => 'required|max:191'
         ]);
 
         School::create([
