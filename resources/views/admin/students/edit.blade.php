@@ -79,7 +79,12 @@
 
                 <select class="form-control" name="standard">
                     @foreach ($standards as $standard)
-                        <option value="{{ $standard->id }}" {{ $standard->id == $student->standard_id ? 'selected' : '' }}>{{ $standard->class }} @if ($standard->syllabus != null) ({{ $standard->syllabus }}) @endif</option>
+                        <option value="{{ $standard->id }}" {{ $standard->id == $student->standard_id ? 'selected' : '' }}>
+                            {{ $standard->class }}
+                            @if ($standard->syllabus != null)
+                                ({{ $standard->syllabus }})
+                            @endif
+                        </option>
                     @endforeach
                 </select>
             </div>

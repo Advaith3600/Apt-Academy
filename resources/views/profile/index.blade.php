@@ -35,7 +35,7 @@
             <div class="d-md-flex mt-3">
                 <div class="{{ Guard::getLoggedInGuard() == 'student' ? 'col-md-6' : 'col-md-12' }}">
                     <label for="school">School:</label>
-                    <input type="text" name="school" value="{{ Auth::guard(Guard::getLoggedInGuard())->user()->school->name }} ({{ Auth::guard(Guard::getLoggedInGuard())->user()->school->location }})" class="form-control" disabled>
+                    <input type="text" name="school" value="{{ optional(Auth::guard(Guard::getLoggedInGuard())->user()->school)->name ?? 'Other' }} @if (optional(Auth::guard(Guard::getLoggedInGuard())->user()->school)->location != null) ({{ Auth::guard(Guard::getLoggedInGuard())->user()->school->location }}) @endif" class="form-control" disabled>
                 </div>
 
                 @if (Guard::getLoggedInGuard() == 'student')

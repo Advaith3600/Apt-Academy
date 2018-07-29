@@ -66,8 +66,14 @@
 
                     <select class="form-control{{ $errors->has('school') ? ' is-invalid' : '' }}" name="school">
                         @foreach ($schools as $school)
-                            <option value="{{ $school->id }}" {{ $school->id == Auth::guard(Guard::getLoggedInGuard())->user()->school_id ? 'checked' : '' }}>{{ $school->name }} ({{ $school->location }})</option>
+                            <option value="{{ $school->id }}" {{ $school->id == Auth::guard(Guard::getLoggedInGuard())->user()->school_id ? 'selected' : '' }}>
+                                {{ $school->name }}
+                                @if ($school->location != null)
+                                    ({{ $school->location }})
+                                @endif
+                            </option>
                         @endforeach
+                        <option value="0" {{ Auth::guard(Guard::getLoggedInGuard())->user()->school_id == null ? 'selected' : '' }}>Other</option>
                     </select>
                 </div>
 
@@ -77,7 +83,12 @@
 
                         <select class="form-control" name="standard">
                             @foreach ($standards as $standard)
-                                <option value="{{ $standard->id }}" {{ $standard->id == Auth::guard(Guard::getLoggedInGuard())->user()->standard_id ? 'selected' : '' }}>{{ $standard->class }} ({{ $standard->syllabus }})</option>
+                                <option value="{{ $standard->id }}" {{ $standard->id == Auth::guard(Guard::getLoggedInGuard())->user()->standard_id ? 'selected' : '' }}>
+                                    {{ $standard->class }}
+                                    @if ($standard->syllabus != null)
+                                        ({{ $standard->syllabus }})
+                                    @endif
+                                </option>
                             @endforeach
                         </select>
                     </div>

@@ -38,7 +38,6 @@ class ProfileController extends Controller
         $request->validate([
             'name' => 'required|max:191',
             'email' => 'required|email|max:191',
-            'school' => 'sometimes|integer',
             'standard' => 'sometimes|integer',
             'guardian_email' => 'sometimes|nullable|email|max:191'
         ]);
@@ -49,7 +48,7 @@ class ProfileController extends Controller
         ];
 
         if (Guard::getLoggedInGuard() == 'student' || Guard::getLoggedInGuard() == 'faculty') {
-            $datas['school_id'] = $request->school;
+            $datas['school_id'] = $request->school == 0 ? null : $request->school;
             $datas['bio'] = $request->bio;
         }
 
