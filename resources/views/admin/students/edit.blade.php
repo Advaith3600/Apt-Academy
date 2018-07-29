@@ -77,9 +77,9 @@
             <div class="col-md-6 mt-3 mt-md-0">
                 <label for="standard">Standard:</label>
 
-                <select class="form-control" name="standard">
+                <select class="form-control" name="standard" v-model="standard">
                     @foreach ($standards as $standard)
-                        <option value="{{ $standard->id }}" {{ $standard->id == $student->standard_id ? 'selected' : '' }}>
+                        <option value="{{ $standard->id }}">
                             {{ $standard->class }}
                             @if ($standard->syllabus != null)
                                 ({{ $standard->syllabus }})
@@ -91,7 +91,7 @@
         </div>
 
         <div class="d-md-flex mt-3">
-            <div class="col-md-12 form-group">
+            <div class="col-md-6 form-group">
                 <label for="school">Guardian's Email If has an account (optional):</label>
 
                 <input type="email" class="form-control{{ $errors->has('guardian_email') ? ' is-invalid' : '' }}" value="{{ $student->guardian_id }}" placeholder="Guardian's email" name="guardian_email">
@@ -101,6 +101,10 @@
                         <strong>{{ $errors->first('guardian_email') }}</strong>
                     </span>
                 @endif
+            </div>
+
+            <div class="col-md-6 form-group mt-3 mt-md-0">
+                <subject-selection :standard="standard" select="{{ $student->subject }}"></subject-selection>
             </div>
         </div>
 
@@ -129,7 +133,8 @@
                     state: false,
                     total: 0,
                     done: 0
-                }
+                },
+                standard: {{ $student->standard_id }}
             },
             methods: {
                 click: function() {

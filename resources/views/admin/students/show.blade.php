@@ -42,10 +42,15 @@
         </div>
 
         <div class="d-md-flex mt-3">
-            <div class="col-md-12">
+            <div class="col-md-6">
                 <label for="school">Guardian Id:</label>
 
                 <input class="form-control" value="{{ $student->guardian_id ?? 'Guardian Not specified' }}" disabled>
+            </div>
+
+            <div class="col-md-6 mt-3 mt-md-0">
+                <label for="subject">Subject:</label>
+                <input type="text" name="subject" value="{{ $student->subject }}" class="form-control" disabled>
             </div>
         </div>
 

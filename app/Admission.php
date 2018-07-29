@@ -6,7 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Admission extends Model
 {
-    protected $fillable = ['name', 'email', 'accepted', 'note', 'picture', 'grades', 'standard_id', 'school_id'];
+    protected $fillable = [
+        'name', 'email', 'accepted', 'note', 'picture', 'grades', 'standard_id', 'school_id', 'subject'
+    ];
 
     public function school()
     {

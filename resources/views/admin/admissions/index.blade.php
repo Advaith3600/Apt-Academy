@@ -28,6 +28,7 @@
                     <th>Name</th>
                     <th>Email</th>
                     <th>Standard</th>
+                    <th>Subject</th>
                     <th>School</th>
                     <th></th>
                 </tr>
@@ -43,6 +44,7 @@
                                 ({{ $admission->standard->syllabus }})
                             @endif
                         </td>
+                        <td>{{ $admission->subject }}</td>
                         <td>
                             {{ optional($admission->school)->name ?? 'Other' }} 
                             @if (optional($admission->school)->location != null)

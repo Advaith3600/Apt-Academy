@@ -61,6 +61,14 @@ class AdmissionController extends Controller
             'note' => 'required|min:10'
         ]);
 
+        if ($request->subject == null) {
+            $standard = Standard::find($request->standard);
+            $request->subject = $standard->class;
+            if ($standard->syllabus) {
+                $request->subject .= '(' . $standard->syllabus . ')';
+            }
+        }
+
         $pfilename = sha1(Carbon::now()) . '.' . $request->file('picture')->getClientOriginalExtension();
         $plocation = public_path('images/admissions/' . $pfilename);
         Image::make($request->file('picture'))->fit(200, 200)->save($plocation);
@@ -82,7 +90,8 @@ class AdmissionController extends Controller
             'school_id' => $request->school == 0 ? null : $request->School,
             'picture' => $psave,
             'grades' => ($request->hasFile('grades') ? $gsave : null),
-            'note' => $request->note
+            'note' => $request->note,
+            'subject' => $request->subject
         ]);
 
         Session::flash('success', 'Your admission request has been successfully sent');
@@ -106,7 +115,8 @@ class AdmissionController extends Controller
             'profile_picture' => $newLocation,
             'school_id' => $admission->school_id,
             'standard_id' => $admission->standard_id,
-            'password' => bcrypt(strtolower($admission->name) . '@apt')
+            'password' => bcrypt(strtolower($admission->name) . '@apt'),
+            'subject' => $admission->subject
         ]);
 
         rename(public_path($admission->picture), public_path($newLocation));
@@ -119,7 +129,7 @@ class AdmissionController extends Controller
         Mail::to($admission->email)->send(new RegistrationAccepted($admission));
 
         Session::flash('success', 'Successfully accepted the admission request');
-        return redirect()->route('admin.admissions.');
+        return redirect()->route('admin.admissions.index');
     }
 
     public function reject(Admission $admission)

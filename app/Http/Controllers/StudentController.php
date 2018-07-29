@@ -26,6 +26,10 @@ class StudentController extends Controller
         if (isset($request->name) && !empty($request->name)) {
             $students = $students->where('name', 'LIKE', '%' . $request->name . '%');
         }
+       
+        if (isset($request->subject) && !empty($request->subject) && $request->subject != '0') {
+            $students = $students->where('subject', 'LIKE', '%' . $request->subject . '%');
+        }
 
         if (isset($request->standard) && !empty($request->standard)) {
             $students = $students->whereHas('standard', function ($query) use ($request) {
@@ -107,7 +111,8 @@ class StudentController extends Controller
             'school_id' => $request->school == 0 ? null : $request->school,
             'bio' => $request->bio,
             'standard_id' => $request->standard,
-            'guardian_id' => optional(Guardian::where('email', $request->email)->first())->id
+            'guardian_id' => optional(Guardian::where('email', $request->email)->first())->id,
+            'subject' => $request->subject
         ]);
 
         Session::flash('success', 'Successfully saved your information');

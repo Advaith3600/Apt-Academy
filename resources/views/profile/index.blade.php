@@ -49,10 +49,16 @@
 
         @if (Guard::getLoggedInGuard() == 'student')
             <div class="d-md-flex mt-3">
-                <div class="col-md-12">
-                    <label for="school">Guardian Id:</label>
+                <div class="col-md-6">
+                    <label for="guardian">Guardian Id:</label>
 
-                    <input class="form-control" value="{{ Auth::guard(Guard::getLoggedInGuard())->user()->guardian_id ?? 'Guardian Not specified' }}" disabled>
+                    <input id="guardian" class="form-control" value="{{ Auth::guard(Guard::getLoggedInGuard())->user()->guardian_id ?? 'Guardian Not specified' }}" disabled>
+                </div>
+
+                <div class="col-md-6 mt-3 mt-md-0">
+                    <label for="subject">Subject</label>
+
+                    <input type="text" id="subject" class="form-control" disabled value="{{ Auth::guard(Guard::getLoggedInGuard())->user()->subject }}">
                 </div>
             </div>
         @endif

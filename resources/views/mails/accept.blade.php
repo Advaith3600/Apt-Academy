@@ -8,6 +8,6 @@ Your login email Id and password are:
 <div style="margin-left: 30px;">
 Email: {{ $admission['email'] }}
 <br>
-Password: {{ $admission['name'] }}@apt
+Password: {{ strtolower($admission['name']) }}@apt
 </div>
 @endcomponent

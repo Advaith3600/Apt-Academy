@@ -71,7 +71,7 @@
                                         </span>
                                     </div>
 
-                                    <select class="form-control{{ $errors->has('standard') ? ' is-invalid' : '' }}" name="standard">
+                                    <select class="form-control{{ $errors->has('standard') ? ' is-invalid' : '' }}" name="standard" v-model="standard">
                                         <option value="0">Select the standard you want to take admission</option>
                                         @foreach ($standards as $standard)
                                             <option value="{{ $standard->id }}">
@@ -90,6 +90,8 @@
                                     @endif
                                 </div>
                             </div>
+
+                            <subject-selection :standard="standard"></subject-selection>
 
                             <div class="form-group row d-flex">
                                 <div class="col-md-6 mb-3 mb-md-0">
@@ -191,4 +193,16 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('js')
+    <script src="{{ asset('js/component.js') }}"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                standard: 0
+            }
+        });
+    </script>
 @endsection

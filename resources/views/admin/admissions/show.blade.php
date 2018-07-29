@@ -59,6 +59,20 @@
                 </div>
 
                 <div class="form-group">
+                    <label for="standard" class="col-form-label">{{ __('Subject:') }}</label>
+
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="fas fa-language"></i>
+                            </span>
+                        </div>
+
+                        <input type="text" disabled class="form-control" value="{{ $admission->subject }}">
+                    </div>
+                </div>
+
+                <div class="form-group">
                     <label for="school" class="col-form-label">{{ __('School:') }}</label>
 
                     <div class="input-group">

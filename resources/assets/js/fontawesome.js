@@ -9,15 +9,8 @@ import faKey from '@fortawesome/fontawesome-free-solid/faKey';
 import faGraduationCap from '@fortawesome/fontawesome-free-solid/faGraduationCap';
 import faImage from '@fortawesome/fontawesome-free-solid/faImage';
 import faSearch from '@fortawesome/fontawesome-free-solid/faSearch';
+import faLanguage from '@fortawesome/fontawesome-free-solid/faLanguage';
 
 fontawesome.library.add({
-    faCalendarAlt,
-    faBars,
-    faTimes,
-    faUser,
-    faEnvelope,
-    faKey,
-    faGraduationCap,
-    faImage,
-    faSearch
+    faCalendarAlt, faBars, faTimes, faUser, faEnvelope, faKey, faGraduationCap, faImage, faSearch, faLanguage
 });

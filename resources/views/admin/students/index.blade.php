@@ -12,7 +12,7 @@
 
     <div class="mb-3">
         <form method="get" action="{{ Request::url() }}" class="d-flex justify-content-between">
-            <div class="d-flex align-items-center">
+            <div class="d-flex align-items-center flex-wrap flex-sm-nowrap">
                 <span class="mr-1">Standard:</span>
 
                 <div class="input-group input-group-sm">
@@ -26,6 +26,20 @@
                                 @endif
                             </option>
                         @endforeach
+                    </select>
+                </div>
+
+                <span class="mx-1">Subject:</span>
+
+                <div class="input-group input-group-sm">
+                    <select name="subject" id="subject" class="form-control">
+                        <option value="0">View All</option>
+                        <option value="Science" {{ isset($_GET['subject']) && $_GET['subject'] == 'Science' ? 'selected' : '' }}>Science</option>
+                        <option value="Maths" {{ isset($_GET['subject']) && $_GET['subject'] == 'Maths' ? 'selected' : '' }}>Maths</option>
+                        <option value="Physics" {{ isset($_GET['subject']) && $_GET['subject'] == 'Physics' ? 'selected' : '' }}>Physics</option>
+                        <option value="Chemistry" {{ isset($_GET['subject']) && $_GET['subject'] == 'Chemistry' ? 'selected' : '' }}>Chemistry</option>
+                        <option value="Biology" {{ isset($_GET['subject']) && $_GET['subject'] == 'Biology' ? 'selected' : '' }}>Biology</option>
+                        <option value="Computer" {{ isset($_GET['subject']) && $_GET['subject'] == 'Computer' ? 'selected' : '' }}>Computer</option>
                     </select>
 
                     <button class="input-group-append btn btn-success btn-sm align-items-center">
@@ -53,6 +67,7 @@
                 <th>Name</th>
                 <th>Email</th>
                 <th>Standard</th>
+                <th>Subject</th>
                 <th>School</th>
                 <th></th>
             </tr>
@@ -69,6 +84,7 @@
                             ({{ $student->standard->syllabus }})
                         @endif
                     </td>
+                    <td>{{ $student->subject }}</td>
                     <td>
                         {{ optional($student->school)->name ?? 'Other' }}
                         @if (optional($student->school)->location != null)

@@ -18,6 +18,7 @@ class CreateStudentsTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->text('bio')->nullable();
+            $table->string('subject')->nullable();
             $table->string('profile_picture');
             $table->string('password');
             $table->boolean('passed_out')->default(false);
