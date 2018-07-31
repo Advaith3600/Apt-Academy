@@ -37,4 +37,9 @@ class Student extends Authenticatable
     {
         return $this->belongsTo('App\School');
     }
+
+    public function guardian()
+    {
+        return $this->belongsTo('App\Guardian');
+    }
 }

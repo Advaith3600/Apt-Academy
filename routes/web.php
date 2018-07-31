@@ -34,7 +34,13 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     });
 
     Route::group(['prefix' => 'faculties', 'as' => 'faculties.'], function () {
-        Route::get('/', 'FacultiesController@index')->name('index');
+        Route::get('/', 'FacultyController@index')->name('index');
+    });
+
+    Route::group(['prefix' => 'guardians', 'as' => 'guardians.'], function () {
+        Route::get('/', 'GuardianController@index')->name('index');
+        Route::get('/register', 'GuardianController@register')->name('register');
+        Route::post('/store', 'GuardianController@store')->name('store');
     });
 });
 

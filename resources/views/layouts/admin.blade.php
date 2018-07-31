@@ -28,9 +28,9 @@
                                     Manage Faculties
                                 </a>
                             </li>
-                            <li class="c-pointer text-hover-grey px-3 py-2" onclick="event.currentTarget.children[0].click()">
-                                <a href="#" class="normalise-a">
-                                    Guardians
+                            <li class="c-pointer text-hover-grey px-3 py-2{{ Request::segment(2) == 'guardians' ? ' bg-success text-white' : ' text-hover-grey' }}" onclick="event.currentTarget.children[0].click()">
+                                <a href="{{ route('admin.guardians.index') }}" class="normalise-a">
+                                    Manage Guardians
                                 </a>
                             </li>
                             <li class="c-pointer px-3 py-2{{ Request::segment(2) == 'schools' ? ' bg-success text-white' : ' text-hover-grey' }}" onclick="event.currentTarget.children[0].click()">

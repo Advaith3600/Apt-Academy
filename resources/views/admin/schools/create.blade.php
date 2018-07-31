@@ -10,6 +10,12 @@
             <label for="name" class="col-form-label">{{ __('School Name') }}</label>
 
             <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        <i class="fas fa-school"></i>
+                    </span>
+                </div>
+
                 <input required id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" placeholder="Name" autofocus>
 
                 @if ($errors->has('name'))
@@ -24,6 +30,12 @@
             <label for="location" class="col-form-label">{{ __('School Location') }}</label>
 
             <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </span>
+                </div>
+
                 <input id="location" type="text" class="form-control{{ $errors->has('location') ? ' is-invalid' : '' }}" name="location" value="{{ old('location') }}" placeholder="Location">
 
                 @if ($errors->has('location'))

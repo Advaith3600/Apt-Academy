@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Faculty;
 
-class FacultiesController extends Controller
+class FacultyController extends Controller
 {
     public function __construct()
     {
@@ -13,7 +13,7 @@ class FacultiesController extends Controller
 
     public function index()
     {
-        $faculties = Faculty::all();
+        $faculties = Faculty::paginate(10);
         return view('admin.faculties.index')->withFaculties($faculties);
     }
 }

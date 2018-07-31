@@ -10,7 +10,9 @@ import faGraduationCap from '@fortawesome/fontawesome-free-solid/faGraduationCap
 import faImage from '@fortawesome/fontawesome-free-solid/faImage';
 import faSearch from '@fortawesome/fontawesome-free-solid/faSearch';
 import faLanguage from '@fortawesome/fontawesome-free-solid/faLanguage';
+import faSchool from '@fortawesome/fontawesome-free-solid/faSchool';
+import faMapMarkerAlt from '@fortawesome/fontawesome-free-solid/faMapMarkerAlt';
 
 fontawesome.library.add({
-    faCalendarAlt, faBars, faTimes, faUser, faEnvelope, faKey, faGraduationCap, faImage, faSearch, faLanguage
+    faCalendarAlt, faBars, faTimes, faUser, faEnvelope, faKey, faGraduationCap, faImage, faSearch, faLanguage, faSchool, faMapMarkerAlt
 });
