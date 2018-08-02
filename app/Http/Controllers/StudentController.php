@@ -62,10 +62,10 @@ class StudentController extends Controller
         ]);
 
         $filename = sha1(Carbon::now()) . '.' . $request->file('picture')->getClientOriginalExtension();
-        $location = public_path('images/profiles/' . $filename);
+        $location = public_path('images/profiles/students/' . $filename);
         Image::make($request->file('picture'))->fit(100, 100)->save($location);
         ImageOptimizer::optimize($location);
-        $save = 'images/profiles/' . $filename;
+        $save = 'images/profiles/students/' . $filename;
 
         Student::create([
             'name' => $request->name,

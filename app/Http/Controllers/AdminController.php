@@ -51,7 +51,7 @@ class AdminController extends Controller
 
         $image = $request->file('picture');
         $filename = sha1(time() . mt_rand()) . '.' . $image->getClientOriginalExtension();
-        $location = 'images/profiles/';
+        $location = 'images/profiles/' . str_plural(strtolower(explode('\\', $request->model)[2])) . '/';
         Image::make($image)->fit(100, 100)->save(public_path($location . $filename));
         ImageOptimizer::optimize($location . $filename);
 

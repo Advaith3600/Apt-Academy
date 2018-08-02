@@ -17,7 +17,7 @@ class Faculty extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'profile_picture', 'bio', 'school_id'
     ];
 
     /**
@@ -28,4 +28,9 @@ class Faculty extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function school()
+    {
+        return $this->belongsTo(School::class);
+    }
 }

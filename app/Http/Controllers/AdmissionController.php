@@ -107,7 +107,7 @@ class AdmissionController extends Controller
 
     public function accept(Admission $admission)
     {
-        $newLocation = '/images/profiles/' . explode('/', $admission->picture)[2];
+        $newLocation = '/images/profiles/students/' . explode('/', $admission->picture)[2];
 
         Student::create([
             'name' => $admission->name,

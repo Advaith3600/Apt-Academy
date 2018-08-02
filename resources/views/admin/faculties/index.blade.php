@@ -5,7 +5,7 @@
 @section('admin-content')
 	<h3 class="d-flex justify-content-between">
         Manage Faculties
-        <a href="{{ route('admin.faculties.create') }}" class="btn btn-outline-success btn-sm px-3">Create</a>
+        <a href="{{ route('admin.faculties.register') }}" class="btn btn-outline-success btn-sm px-3">Register</a>
     </h3>
 
     <div>
@@ -16,6 +16,7 @@
                     <th>Name</th>
                     <th>Email</th>
                     <th>School</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -29,6 +30,10 @@
                             @if (optional($faculty->school)->location != null)
                                 ({{ $faculty->school->location }})
                             @endif
+                        </td>
+                        <td>
+                            <a href="{{ route('admin.faculties.show', $faculty->id) }}" class="btn btn-outline-success btn-sm">View</a>
+                            <a href="{{ route('admin.faculties.edit', $faculty->id) }}" class="btn btn-outline-success btn-sm">Edit</a>
                         </td>
                     </tr>
                 @empty

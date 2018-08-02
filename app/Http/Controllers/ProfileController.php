@@ -71,7 +71,7 @@ class ProfileController extends Controller
 
         $image = $request->file('picture');
         $filename = sha1(time() . mt_rand()) . '.' . $image->getClientOriginalExtension();
-        $location = '/images/profiles/';
+        $location = '/images/profiles/' . str_plural(strtolower(Guard::getLoggedInGuard())) . '/';
         $image->move(public_path($location), $filename);
 
         Storage::delete(Auth::guard(Guard::getLoggedInGuard())->user()->profile_picture);

@@ -15,9 +15,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::get('/', 'StudentController@index')->name('index');
         Route::get('/register', 'StudentController@register')->name('register');
         Route::post('/store', 'StudentController@store')->name('store');
-        Route::get('/view/{student}', 'StudentController@show')->name('show');
-        Route::get('/edit/{student}', 'StudentController@edit')->name('edit');
-        Route::put('/update/{student}', 'StudentController@update')->name('update');
+        Route::get('/{student}/view', 'StudentController@show')->name('show');
+        Route::get('/{student}/edit', 'StudentController@edit')->name('edit');
+        Route::put('/{student}/update', 'StudentController@update')->name('update');
     });
 
     Route::group(['prefix' => 'schools', 'as' => 'schools.'], function () {
@@ -35,7 +35,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
     Route::group(['prefix' => 'faculties', 'as' => 'faculties.'], function () {
         Route::get('/', 'FacultyController@index')->name('index');
-        Route::get('/create', 'FacultyController@create')->name('create');
+        Route::get('/register', 'FacultyController@register')->name('register');
+        Route::post('/store', 'FacultyController@store')->name('store');
+        Route::get('/{faculty}/view', 'FacultyController@show')->name('show');
+        Route::get('/{faculty}/edit', 'FacultyController@edit')->name('edit');
+        Route::put('/{faculty}/update', 'FacultyController@update')->name('update');
     });
 
     Route::group(['prefix' => 'guardians', 'as' => 'guardians.'], function () {
