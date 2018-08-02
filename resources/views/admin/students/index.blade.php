@@ -93,7 +93,7 @@
                         @endif
                     </td>
                     <td>
-                        <attendance :id="{{ $student->id }}" selected="{{ $student->getAttendanceByDate(date('Y-m-d')) }}"></attendance>
+                        <attendance :id="{{ $student->id }}" selected="{{ $student->getAttendanceByDate(date('Y-m-d')) }}" date="{{ date('Y-m-d') }}"></attendance>
                     </td>
                     <td>
                         <a href="{{ route('admin.students.show', $student->id) }}" class="btn btn-sm btn-outline-success">View</a>

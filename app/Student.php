@@ -48,8 +48,8 @@ class Student extends Authenticatable
         return $this->hasMany(Attendance::class);
     }
 
-    public function getAttendanceByDate($date, $operation = '=')
+    public function getAttendanceByDate($date)
     {
-        return optional($this->attendances()->where('date', $operation, $date)->first())->attendance;
+        return optional($this->attendances()->where('date', '=', $date)->first())->attendance;
     }
 }

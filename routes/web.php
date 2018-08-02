@@ -49,6 +49,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     });
 
     Route::group(['prefix' => 'attendance', 'as' => 'attendance.'], function () {
+        Route::get('/index', 'AttendanceController@index')->name('index');
         Route::post('/update/{student}', 'AttendanceController@update')->name('update');
     });
 });

@@ -38,6 +38,12 @@
                                     Manage Schools
                                 </a>
                             </li>
+
+                            <li class="c-pointer px-3 py-2{{ Request::segment(2) == 'attendance' ? ' bg-success text-white' : ' text-hover-grey' }}" onclick="event.currentTarget.children[0].click()">
+                                <a href="{{ route('admin.attendance.index') }}" class="normalise-a">
+                                    Attendance
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </div>

@@ -63,6 +63,14 @@
         </div>
 
         <div class="d-md-flex mt-3">
+            <div class="col-md-12">
+                <b>Attendance of this month</b>
+                present {{ $student->attendances()->where('date', '>=', Carbon\Carbon::now()->startOfMonth()->format('Y-m-d'))->where('attendance', '=', true)->count() }} days,
+                absent {{  $student->attendances()->where('date', '>=', Carbon\Carbon::now()->startOfMonth()->format('Y-m-d'))->where('attendance', '=', false)->count() }} days
+            </div>
+        </div>
+
+        <div class="d-md-flex mt-3">
         	<div class="col-md-12">
                 <a href="{{ route('admin.students.edit', $student->id) }}" class="btn btn-outline-success px-4">Edit</a>
             </div>
