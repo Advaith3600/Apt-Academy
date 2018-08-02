@@ -69,6 +69,7 @@
                 <th>Standard</th>
                 <th>Subject</th>
                 <th>School</th>
+                <th>Today's attendance</th>
                 <th></th>
             </tr>
         </thead>
@@ -92,6 +93,9 @@
                         @endif
                     </td>
                     <td>
+                        <attendance :id="{{ $student->id }}" selected="{{ $student->getAttendanceByDate(date('Y-m-d')) }}"></attendance>
+                    </td>
+                    <td>
                         <a href="{{ route('admin.students.show', $student->id) }}" class="btn btn-sm btn-outline-success">View</a>
 
                         <a href="{{ route('admin.students.edit', $student->id) }}" class="btn btn-sm btn-outline-success">Edit</a>
@@ -106,4 +110,13 @@
     </table>
 
     {{ $students->links() }}
+@endsection
+
+@section('js')
+    <script src="{{ asset('js/component.js') }}"></script>
+    <script>
+        new Vue({
+            el: '#app'
+        });
+    </script>
 @endsection

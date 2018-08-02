@@ -16,4 +16,9 @@ class FacultyController extends Controller
         $faculties = Faculty::paginate(10);
         return view('admin.faculties.index')->withFaculties($faculties);
     }
+
+    public function create()
+    {
+        return view('admin.faculties.create');
+    }
 }

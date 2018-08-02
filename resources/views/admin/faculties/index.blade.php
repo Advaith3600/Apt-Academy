@@ -5,7 +5,7 @@
 @section('admin-content')
 	<h3 class="d-flex justify-content-between">
         Manage Faculties
-        {{-- <a href="{{ route('admin.faculties.create') }}" class="btn btn-outline-success btn-sm px-3">Create</a> --}}
+        <a href="{{ route('admin.faculties.create') }}" class="btn btn-outline-success btn-sm px-3">Create</a>
     </h3>
 
     <div>

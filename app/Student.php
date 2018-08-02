@@ -30,16 +30,26 @@ class Student extends Authenticatable
 
     public function standard()
     {
-        return $this->belongsTo('App\Standard');
+        return $this->belongsTo(Standard::class);
     }
 
     public function school()
     {
-        return $this->belongsTo('App\School');
+        return $this->belongsTo(School::class);
     }
 
     public function guardian()
     {
-        return $this->belongsTo('App\Guardian');
+        return $this->belongsTo(Guardian::class);
+    }
+
+    public function attendances()
+    {
+        return $this->hasMany(Attendance::class);
+    }
+
+    public function getAttendanceByDate($date, $operation = '=')
+    {
+        return optional($this->attendances()->where('date', $operation, $date)->first())->attendance;
     }
 }

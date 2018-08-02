@@ -35,12 +35,17 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
     Route::group(['prefix' => 'faculties', 'as' => 'faculties.'], function () {
         Route::get('/', 'FacultyController@index')->name('index');
+        Route::get('/create', 'FacultyController@create')->name('create');
     });
 
     Route::group(['prefix' => 'guardians', 'as' => 'guardians.'], function () {
         Route::get('/', 'GuardianController@index')->name('index');
         Route::get('/register', 'GuardianController@register')->name('register');
         Route::post('/store', 'GuardianController@store')->name('store');
+    });
+
+    Route::group(['prefix' => 'attendance', 'as' => 'attendance.'], function () {
+        Route::post('/update/{student}', 'AttendanceController@update')->name('update');
     });
 });
 
