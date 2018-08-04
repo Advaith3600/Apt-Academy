@@ -66,6 +66,7 @@ Route::group(['prefix' => 'profile', 'as' => 'profile.'], function () {
     Route::get('/password', 'ProfileController@password')->name('password');
     Route::put('/password/update', 'ProfileController@passwordUpdate')->name('password.update');
     Route::post('/password/update/picture', 'ProfileController@passwordUpdatePicture');
+    Route::middleware('auth:guardian')->get('/manage', 'GuardianController@manage')->name('guardians.index');
 });
 
 Route::get('/contact', 'ContactUsController@index');

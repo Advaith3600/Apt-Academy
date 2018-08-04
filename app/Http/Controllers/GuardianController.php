@@ -2,15 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use Session;
 use App\Guardian;
+use Auth;
+use Guard;
 use Illuminate\Http\Request;
+use Session;
 
 class GuardianController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('admin.auth');
+        $this->middleware('admin.auth', ['except' => 'manage']);
     }
 
     public function index()
@@ -40,5 +42,11 @@ class GuardianController extends Controller
 
         Session::flash('success', 'Guardian registerd successfully');
         return redirect()->route('admin.guardians.index');
+    }
+
+    public function manage()
+    {
+        $students = Auth::guard('guardian')->user()->students;
+        return view('profile.guardians.index')->withStudents($students);
     }
 }

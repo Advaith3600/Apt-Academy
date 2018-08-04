@@ -13,6 +13,13 @@
                 <div class="card">
                     <div class="card-body p-0">
                         <ul class="mb-0 pl-0 list-style-none">
+                            @if(Guard::getLoggedInGuard() == 'guardian')
+                                <li class="c-pointer px-3 py-2{{ Request::segment(2) == 'manage' ? ' bg-success text-white' : ' text-hover-grey' }}" onclick="event.currentTarget.children[0].click()">
+                                    <a href="{{ route('profile.guardians.index') }}" class="normalise-a ">
+                                        Manage students
+                                    </a>
+                                </li>
+                            @endif
                             <li class="c-pointer px-3 py-2{{ Request::is('profile') ? ' bg-success text-white' : ' text-hover-grey' }}" onclick="event.currentTarget.children[0].click()">
                                 <a href="{{ route('profile.index') }}" class="normalise-a ">
                                     View Profile
