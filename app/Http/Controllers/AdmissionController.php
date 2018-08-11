@@ -51,6 +51,8 @@ class AdmissionController extends Controller
 
     public function store(Request $request)
     {
+        $request->subject = serialize(json_decode($request->subject));
+
         $request->validate([
             'name' => 'required|max:191',
             'email' => 'required|email|unique:admissions|unique:students|unique:faculties|unique:guardians|unique:admins|unique:users',
@@ -60,14 +62,6 @@ class AdmissionController extends Controller
             'grades' => 'sometimes|image',
             'note' => 'required|min:10'
         ]);
-
-        if ($request->subject == null) {
-            $standard = Standard::find($request->standard);
-            $request->subject = $standard->class;
-            if ($standard->syllabus) {
-                $request->subject .= '(' . $standard->syllabus . ')';
-            }
-        }
 
         $pfilename = sha1(Carbon::now()) . '.' . $request->file('picture')->getClientOriginalExtension();
         $plocation = public_path('images/admissions/' . $pfilename);

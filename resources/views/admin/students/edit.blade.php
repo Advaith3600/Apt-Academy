@@ -94,7 +94,7 @@
             <div class="col-md-6 form-group">
                 <label for="school">Guardian's Email If has an account (optional):</label>
 
-                <input type="email" class="form-control{{ $errors->has('guardian_email') ? ' is-invalid' : '' }}" value="{{ $student->guardian_id }}" placeholder="Guardian's email" name="guardian_email">
+                <input type="email" class="form-control{{ $errors->has('guardian_email') ? ' is-invalid' : '' }}" value="{{ optional($student->guardian)->email }}" placeholder="Guardian's email" name="guardian_email">
 
                 @if ($errors->has('guardian_email'))
                     <span class="invalid-feedback">
@@ -104,7 +104,7 @@
             </div>
 
             <div class="col-md-6 form-group mt-3 mt-md-0">
-                <subject-selection :standard="standard" select="{{ $student->subject }}"></subject-selection>
+                <subject-selection :standard="standard" select="{{ json_encode($student->subject()) }}"></subject-selection>
             </div>
         </div>
 

@@ -52,4 +52,25 @@ class Student extends Authenticatable
     {
         return optional($this->attendances()->where('date', '=', $date)->first())->attendance;
     }
+
+    public function subject()
+    {
+        return unserialize($this->subject);
+    }
+
+    public function subjectsOnly()
+    {
+        $subjects = $this->subject();
+
+        for ($i=0; $i < count($subjects); $i++) {
+            unset($subjects[$i][1]);
+            unset($subjects[$i][2]);
+
+            $subjects[$i] = $subjects[$i][0];
+        }
+
+        $subjects = implode(',', $subjects);
+
+        return $subjects;
+    }
 }

@@ -44,7 +44,7 @@
                                 ({{ $admission->standard->syllabus }})
                             @endif
                         </td>
-                        <td>{{ $admission->subject }}</td>
+                        <td>{{ $admission->subjectsOnly() }}</td>
                         <td>
                             {{ optional($admission->school)->name ?? 'Other' }} 
                             @if (optional($admission->school)->location != null)
@@ -59,7 +59,7 @@
                     </tr>
                 @empty
                     <tr class="text-center">
-                        <td colspan="5">No new Admission requests</td>
+                        <td colspan="6">No new Admission requests</td>
                     </tr>
                 @endforelse
             </tbody>

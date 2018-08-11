@@ -50,7 +50,7 @@
 
             <div class="col-md-6 mt-3 mt-md-0">
                 <label for="subject">Subject:</label>
-                <input type="text" name="subject" value="{{ $student->subject }}" class="form-control" disabled>
+                <input type="text" name="subject" value="{{ $student->subjectsOnly() }}" class="form-control" disabled>
             </div>
         </div>
 

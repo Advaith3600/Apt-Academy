@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Auth;
+use Illuminate\Http\Resources\Json\Resource;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
@@ -31,6 +32,8 @@ class AppServiceProvider extends ServiceProvider
                    Auth::guard('admin')->guest() && Auth::guard('faculty')->guest() &&
                    Auth::guard('student')->guest() && Auth::guard('guardian')->guest();
         });
+
+        Resource::withoutWrapping();
     }
 
     /**

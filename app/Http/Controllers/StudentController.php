@@ -53,6 +53,8 @@ class StudentController extends Controller
 
     public function store(Request $request)
     {
+        $request->subject = serialize(json_decode($reqeust->subject));
+
         $request->validate([
             'name' => 'required',
             'email' => 'required|email',
@@ -97,6 +99,8 @@ class StudentController extends Controller
 
     public function update(Student $student, Request $request)
     {
+        $request->subject = serialize(json_decode($request->subject));
+
         $request->validate([
             'name' => 'required|max:191',
             'email' => 'required|email|max:191',

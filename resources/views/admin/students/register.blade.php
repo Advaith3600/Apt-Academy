@@ -56,13 +56,13 @@
                     </span>
                 </div>
 
-                <select class="form-control{{ $errors->has('standard') ? ' is-invalid' : '' }}" name="standard">
+                <select class="form-control{{ $errors->has('standard') ? ' is-invalid' : '' }}" name="standard" v-model="standard">
                     <option value="0">Select standard</option>
                     @foreach ($standards as $standard)
                         <option value="{{ $standard->id }}">
-                            {{ $school->name }}
-                            @if ($school->location != null)
-                                ({{ $school->location }})
+                            {{ $standard->class }}
+                            @if ($standard->syllabus != null)
+                                ({{ $standard->syllabus }})
                             @endif
                         </option>
                     @endforeach
@@ -76,8 +76,12 @@
             </div>
         </div>
 
-        <div class="form-group row d-flex">
-            <div class="col-md-12 mb-3 mb-md-0">
+        <div class="form-group">
+            <subject-selection :standard="standard" select=""></subject-selection>
+        </div>
+
+        <div class="form-group">
+            <div class="mb-3 mb-md-0">
                 <label for="picture" class="col-form-label">{{ __('Student\'s photo:') }}</label>
 
                 <div class="input-group">
@@ -111,7 +115,12 @@
                 <select class="form-control{{ $errors->has('school') ? ' is-invalid' : '' }}" name="school">
                     <option value="0">Select School</option>
                     @foreach ($schools as $school)
-                        <option value="{{ $school->id }}">{{ $school->name }} ({{ $school->location }})</option>
+                        <option value="{{ $school->id }}">
+                            {{ $school->name }}
+                            @if ($school->location != null)
+                                ({{ $school->location }})
+                            @endif
+                        </option>
                     @endforeach
                 </select>
 
@@ -131,4 +140,16 @@
             </div>
         </div>
     </form>
+@endsection
+
+@section('js')
+    <script src="{{ asset('js/component.js') }}"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                standard: 0
+            }
+        });
+    </script>
 @endsection

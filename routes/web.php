@@ -69,5 +69,9 @@ Route::group(['prefix' => 'profile', 'as' => 'profile.'], function () {
     Route::middleware('auth:guardian')->get('/manage', 'GuardianController@manage')->name('guardians.index');
 });
 
+Route::group(['prefix' => 'get'], function () {
+    Route::post('/standards', 'ApiController@standards');
+});
+
 Route::get('/contact', 'ContactUsController@index');
 Route::post('/contact', 'ContactUsController@sendMail');

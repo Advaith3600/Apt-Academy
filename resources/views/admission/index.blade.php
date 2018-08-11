@@ -91,7 +91,7 @@
                                 </div>
                             </div>
 
-                            <subject-selection :standard="standard"></subject-selection>
+                            <subject-selection :standard="standard" v-on:subjectchanged="subjectChanged"></subject-selection>
 
                             <div class="form-group row d-flex">
                                 <div class="col-md-6 mb-3 mb-md-0">
@@ -182,6 +182,7 @@
 
                             <div class="form-group mb-0">
                                 <div>
+                                    Total fees: &#8377; <span v-text="price"></span>
                                     <button type="submit" class="btn btn-outline-success btn-block">
                                         {{ __('Send Request') }}
                                     </button>
@@ -201,7 +202,13 @@
         new Vue({
             el: '#app',
             data: {
-                standard: 0
+                standard: 0,
+                price: 0
+            },
+            methods: {
+                subjectChanged: function (array) {
+                    this.price = array.map(u => u[1]).reduce((a, b) => a + b, 0);
+                }
             }
         });
     </script>

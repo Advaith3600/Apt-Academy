@@ -85,7 +85,7 @@
                             ({{ $student->standard->syllabus }})
                         @endif
                     </td>
-                    <td>{{ $student->subject }}</td>
+                    <td>{{ $student->subjectsOnly() }}</td>
                     <td>
                         {{ optional($student->school)->name ?? 'Other' }}
                         @if (optional($student->school)->location != null)
