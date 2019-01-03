@@ -164,7 +164,7 @@
             },
             computed: {
                 uploadPercent: function () {
-                    if (this.upload.total == 0) {
+                    if (this.upload.total === 0) {
                         return 0;
                     }
 

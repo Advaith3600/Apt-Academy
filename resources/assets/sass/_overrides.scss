@@ -1,14 +1,16 @@
-a, .btn.btn-link {
-    color: #28a745;
+a,
+.btn.btn-link {
+	color: $green;
 }
 
-a:hover, a:active {
-    color: var(--green);
+a:hover,
+a:active {
+	color: $teal;
 }
 
 .form-control:focus {
-    border-color: var(--success);
-    box-shadow: 0 0 0 0.2rem rgba(100, 255, 100, 0.25);
+	border-color: $teal;
+	box-shadow: 0 0 0 0.2rem $green;
 }
 
 .pagination {
@@ -16,15 +18,15 @@ a:hover, a:active {
 	margin-top: 1rem;
 
 	.page-link {
-		color: var(--green);
+		color: $green;
 	}
 
 	.page-item.active .page-link {
-		background-color: var(--green);
-		border-color: var(--green);
+		background-color: $green;
+		border-color: $green;
 	}
 
 	.page-link:focus {
-		box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.5);
+		box-shadow: 0 0 0 0.2rem $teal;
 	}
 }

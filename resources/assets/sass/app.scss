@@ -1,6 +1,5 @@
 // Fonts
 @import url("https://fonts.googleapis.com/css?family=Nunito:300,400,600");
-@import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
 // Variables
 @import "variables";
@@ -26,13 +25,14 @@ footer {
     background-color: white;
     text-align: center;
     padding: 8px 0;
-    border-top: 3px solid var(--green);
+    border-top: 3px solid $green;
 }
 
 // carousel styles
 .h-carousel {
     height: 300px;
 }
+
 .carousel-round {
     position: relative;
     display: flex;
@@ -40,11 +40,13 @@ footer {
     padding: 15px;
     border-radius: 50%;
 }
+
 @include media-breakpoint-up(sm) {
     .h-carousel {
         height: 500px;
     }
 }
+
 @include media-breakpoint-up(md) {
     .h-carousel {
         height: 600px;
@@ -52,11 +54,14 @@ footer {
 }
 
 // change profile picture
-.c-pointer-image:hover + div, .c-pointer-image + div:hover {
+.c-pointer-image:hover+div,
+.c-pointer-image+div:hover {
     opacity: 1;
 }
+
 .profile-image {
-    display: flex;;
+    display: flex;
+    ;
     position: absolute;
     top: 0;
     width: 100px;
@@ -65,6 +70,7 @@ footer {
     color: #fff;
     opacity: 0;
     transition: .3s;
+
     span {
         margin: auto;
     }

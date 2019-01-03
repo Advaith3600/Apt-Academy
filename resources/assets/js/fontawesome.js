@@ -14,5 +14,16 @@ import faSchool from '@fortawesome/fontawesome-free-solid/faSchool';
 import faMapMarkerAlt from '@fortawesome/fontawesome-free-solid/faMapMarkerAlt';
 
 fontawesome.library.add({
-    faCalendarAlt, faBars, faTimes, faUser, faEnvelope, faKey, faGraduationCap, faImage, faSearch, faLanguage, faSchool, faMapMarkerAlt
+    faCalendarAlt,
+    faBars,
+    faTimes,
+    faUser,
+    faEnvelope,
+    faKey,
+    faGraduationCap,
+    faImage,
+    faSearch,
+    faLanguage,
+    faSchool,
+    faMapMarkerAlt
 });
